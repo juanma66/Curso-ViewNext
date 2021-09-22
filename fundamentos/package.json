@@ -1,0 +1,14 @@
+{
+  "name": "fundamentos",
+  "version": "1.0.0",
+  "description": "Curso ViewNext",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juan Manuel Díaz",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^7.32.0"
+  }
+}
