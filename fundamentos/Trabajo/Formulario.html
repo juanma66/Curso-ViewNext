@@ -5,33 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
     <main>
-<header><h2>Formulario de registro</h2></header>
+
 <section>
 
-    <form name="formulario" id="formulario" action="" method="">
+    <form name="formulario" id="formulario" action="" method="" class="form form_input">
+        <header><h2>Registro</h2></header>
+      
+                <label class="etiqueta">*Id Cliente</label><input type="number" name="id_cliente" placeholder="Id Cliente" id="cliente" min="0" required class="input  input_hover">
+           
+               <label class="etiqueta">*Tienda</label>
+               <select name="select">
+                <option value="1" selected>Tienda 1</option>
+                <option value="2">Tienda 2</option>
+                <option value="3">Tienda 3</option>
+              </select>
+          
 
-        <table>
-            <tr>
-                <td><input type="number" name="id_cliente" placeholder="Id Cliente" id="cliente" min="0" required></td>
-            </tr>
-            <tr>
-                <td><input type="number" name="id_tienda" placeholder="Id Tienda" id="tienda" min="0" required></td>
-            </tr>
-
-            <tr><td><input type="text" name="nombre" placeholder="Nombre" id="nombre" maxlength="20" required></td></tr>
-            <tr><td><input type="text" name="apellido" placeholder="Apellido" id="apellido" maxlength="40"  required></td></tr>
-            <tr><td><input type="email" name="email" placeholder="Email" id="email" required></td></tr>
-            <tr><td><input type="text" name="direccion" placeholder="Dirección" id="direcion" required></td></tr>
-            <tr><td><input type="date"></td></tr>
-            <tr><td><label>Activo</label><input type="checkbox" name="act" id="acti"></td></tr>
+               <label class="etiqueta">*Nombre</label><input type="text" name="nombre" placeholder="Nombre" id="nombre" maxlength="20" required class="input  input_hover">
+               <label class="etiqueta">*Apellido</label> <input type="text" name="apellido" placeholder="Apellido" id="apellido" maxlength="40"  required class="input  input_hover">
+               <label class="etiqueta">*Email</label> <input type="email" name="email" placeholder="Email" id="email" required class="input  input_hover">
+               <label class="etiqueta">*Dirección</label><input type="text" name="direccion" placeholder="Dirección" id="direcion" required class="input  input_hover">
+               <label class="etiqueta">*Fecha</label><input type="date">
+               <label class="etiqueta">*Activo</label><input type="checkbox" name="act" id="acti">
   
-       </table>
+       
 
-        <input type="submit" value="Envío" name="envio" id="envio">
-        <input type="reset" value="Borrar" name="bor" id="bor">
+        <input type="submit" value="Envío" name="envio" id="envio" class="form_boton_hover">
+        <input type="reset" value="Borrar" name="bor" id="bor" class="form_boton_hover">
     </form>
     
 </section>
