@@ -9,6 +9,7 @@
   "author": "Juan Manuel Díaz",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "eslint": "^7.32.0"
   }
 }

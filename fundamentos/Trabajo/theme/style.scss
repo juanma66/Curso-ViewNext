@@ -1,0 +1,7 @@
+@mixin paraBody {
+   body: {
+    background-color: var(--principal-background-color, white);
+    color: var(--principal-text-color, black);
+    margin: 0;
+   }
+}
