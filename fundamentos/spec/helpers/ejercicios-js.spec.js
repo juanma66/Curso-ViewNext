@@ -30,7 +30,7 @@
 
 describe('ejer6...',()=>{
     it('palindromo valido', ()=>{
-        let caso='ana';
+        let caso='oso';
         expect(validaPalimetro(caso)).toBeTrue()
     });
 

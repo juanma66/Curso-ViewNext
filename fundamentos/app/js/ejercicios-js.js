@@ -108,7 +108,7 @@ function dni(){
 
 
 
-function palindromo(){
+function validaPalimetro(){
 
     let palabra=prompt("Una palabra").toLowerCase();
  
