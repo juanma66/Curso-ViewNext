@@ -2,52 +2,52 @@
 /**/
 
 
-function aleatorio(){
+function aleatorio(min, max){
 
-     let principio=1;
-     let final=prompt("Selecciona un número final");
-     let resultado= parseInt(Math.random() * (final - principio)) + principio;
-
-    alert ("El número aleatorios \n"+resultado);
-
-
+    return Math.floor(Math.random()*(max-min))+min;
+  
 }
 
 function juegoNumero(){
 
-   let numeroAleatorio = parseInt(Math.random()* 100)+1;
-    alert(numeroAleatorio);
-    let num;
+  let aleatorio=random(0,100);
+  let bandera=true;
+  let contador=0;
 
-    while(numeroAleatorio != num){
-   
-        num = prompt("Ingrese numero: ");
-        if (numeroAleatorio == num){
-          alert("Bien");
-        } else if(numeroAleatorio>num){
-          alert("Numero mayor");
-        }else if(numeroAleatorio<num){
-            alert("Numero menor");
+
+  do{
+      var mensaje;
+      var opcion=prompt("Introducir datos");
+
+      if(opcion==null  || opcion==""){
+             mensaje="Numero vacio";
+      }else{
+
+        if(opcion>aleatorio){
+          alert="Tu numero es mayor";
+        } if(opcion<aleatorio){
+          alert="Tu numero es menor";
+        } if(opcion==aleatorio){
+          alert="Tu numero es mayor";
+          bandera=falso;
         }
-    }
-
-
+      }
+      contador++;
+  }while(bandera==true  && contador!=5);
 
 }
 
 
-function ara(){
+function iniciarArray(lom, dato){
 
-   let miAr=new Array();
-   let numero=prompt("Introduce el número");
-   let rellena=0;
+   let ar=[];
+   for(let i=0; i<lom; i++){
+    ar.push(dato);
 
-   for(let i=0; i<numero; i++){
-     miAr.push(rellena);
- 
- alert(miAr[i]);
-}
+   }
 
+      console.log(ar);
+      return ar;
 
 }
 
