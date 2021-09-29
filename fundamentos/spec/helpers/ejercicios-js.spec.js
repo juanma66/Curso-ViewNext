@@ -1,17 +1,20 @@
 
-    describe('ejer3',function(){
-    it('iniciar',function(){
-    let arr=iniciarArray(5,0);
-    expect(arr.length).toBe(5);
-    for(i of arr){
-    expect(i).toBe(0);
-    }
+    describe('ejer3',()=>{
+            
+        it('iniciar',()=>{
+        let arr=iniciarArray(5,0);
+        expect(arr.length).toBe(5);
+
+        for(i of arr){
+        expect(i).toBe(0);
+        }
 
     })
     })
 
 
     describe('ejer4',()=>{
+
      it('5 numeros primo',()=>{
          let vector=[2,3,5,7,11];
          let cuantos=5;
