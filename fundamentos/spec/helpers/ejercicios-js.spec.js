@@ -15,9 +15,9 @@
 
     describe('ejer4',()=>{
 
-     it('5 numeros primo',()=>{
-         let vector=[2,3,5,7,11];
-         let cuantos=5;
+     it('los 10 primeros',()=>{
+         let vector=[2, 3, 5, 7, 11, 13, 17, 19, 23, 29];
+         let cuantos=10;
 
          let resultado=primos(cuantos);
 
@@ -27,6 +27,7 @@
 
     })
 
+    describe('ejer5...')
 
 describe('ejer6...',()=>{
     it('palindromo valido', ()=>{
