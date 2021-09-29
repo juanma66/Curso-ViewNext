@@ -1,6 +1,13 @@
 describe('Demo de la prueba',function(){
 
 describe('una anidada', function(){
+it('suma 2 + 2',function(){
+ let a=2, b=2;
+ let resul;
+ resul=suma(a,b);
+  expect(resul).toBe(4);
+
+})
 
 })
 
@@ -9,7 +16,7 @@ describe('una anidada', function(){
                 expect(true).toBeTruthy()
              })
 
-             it('Este funciona siempre', function(){
+             xit('Este funciona siempre', function(){
 
                 expect(true).not.toBeTruthy()
              })
