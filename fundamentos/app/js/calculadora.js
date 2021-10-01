@@ -35,12 +35,12 @@ class Calculadora{
         this.pantalla = this.acum.toString();
     }
 
-    borrar_digito(){
-     if(operador)
-    }
-}
-    borrar_todo(){
 
+
+    borrar_digito() {
+        this.pantalla = '0';
     }
+
+ 
 
 }
