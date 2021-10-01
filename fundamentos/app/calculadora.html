@@ -64,6 +64,8 @@
 
             let calcu = new Calculadora();
 
+              calcu.borra_uno();
+
             document.querySelectorAll('.numeros').forEach(tag =>{
                 tag.addEventListener('click',ev =>{
                     calcu.ponerdigito(ev.target.textContent);
@@ -78,6 +80,12 @@
                 }) 
             })
             
+
+            btn_borrar_todo.addEventListener('click', () => {
+            calcu.borrar_digito();
+       
+              })
+  
 
         })()
     </script>

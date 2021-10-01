@@ -40,7 +40,13 @@ class Calculadora{
     borrar_digito() {
         this.pantalla = '0';
     }
-
- 
+    
+   borra_uno(){
+    document.getElementById('btn_borrar_ultimo_digito').addEventListener('click', () => {
+    var texto = document.getElementById('textoPantalla');
+    texto.value = texto.value.substring(0, texto.value.length - 1);
+              
+  });
+}
 
 }
