@@ -1,7 +1,7 @@
 
-    describe('ejer3',()=>{
+    /*xdescribe('ejer3',()=>{
             
-        it('iniciar',()=>{
+        xit('iniciar',()=>{
         let arr=iniciarArray(5,0);
         expect(arr.length).toBe(5);
 
@@ -13,9 +13,9 @@
     })
 
 
-    describe('ejer4',()=>{
+    xdescribe('ejer4',()=>{
 
-     it('los 10 primeros',()=>{
+     xit('los 10 primeros',()=>{
          let vector=[2, 3, 5, 7, 11, 13, 17, 19, 23, 29];
          let cuantos=10;
 
@@ -27,18 +27,31 @@
 
     })
 
-    describe('ejer5...')
+    xdescribe('ejer5...',()=>{
+      
 
-describe('ejer6...',()=>{
-    it('palindromo valido', ()=>{
+    })
+
+xdescribe('ejer6...',()=>{
+    xit('palindromo valido', ()=>{
         let caso='oso';
         expect(validaPalimetro(caso)).toBeTrue()
     });
 
    
-        it('palindromo invalido', ()=>{
+        xit('palindromo invalido', ()=>{
             let caso='cosas';
             expect(validaPalimetro(caso)).toBeFalse()
         });
 
 });
+
+
+
+
+     xdescribe('Juego con clase', ()=>{
+         it('Juego',()=>{
+
+            
+         })
+     })*/

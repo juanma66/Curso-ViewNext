@@ -124,3 +124,51 @@ function validaPalimetro(){
 	return true;
 }
 
+
+class Juego2{
+
+  constructor(min, max){
+    this.aleatori=aleatori;
+    this.bandera=bandera;
+    this.contador=contador;
+    this.mensaje=mensaje;
+    this.enpezamos;
+  };
+
+      enpezamos(){
+        this.aleatorio=random(0,100);
+        this.bandera=true;
+        this.contador=0;
+        this.mensaje="Empezamos";
+      }
+
+      jueg(){
+
+        do{
+          let opcion=aleatorio();
+         // var opcion=prompt("Introducir datos");
+    
+          if(opcion==null  || opcion==""){
+            return this.mensaje="Número vacío";
+                // alect="Numero vacio";
+          }else{
+    
+            if(this.opcion>this.aleatori){
+              return this.mensaje="Tú número es mayor";
+              //alert="Tu numero es mayor";
+            } if(this.opcion<this.aleatori){
+              return this.mensaje="Tú número es menor";
+             // alert="Tu numero es menor";
+            } if(this.opcion==this.aleatori){
+              return this.mensaje="Número correcto";
+            //  alert="Tu numero es mayor";
+              this.bandera=falso;
+            }
+          }
+          this.contador++;
+      }while(this.bandera==true  && this.contador!=5);
+      }
+  
+
+
+}

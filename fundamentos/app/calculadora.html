@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/calculadora.css"/>
+    <title>Calculadora</title>
+</head>
+<body>
+    <div class="container">
+        <header class="titulo">
+            <h1>Calculadora</h1>
+        </header>
+        <section class="wrapper">
+            <input type="textfield" id="textoPantalla" class="resultado grid-4" readonly>
+           
+            <button id="btn_borrar_ultimo_digito" class="borrar_opc button"> Retr</button>
+            <button id="btn_borrar_todo" class="borrar_opc button">C</button>
+            <button id="btn_dividir" class="operadores button">/</button> 
+            <button id="btn_multiplicar" class="operadores button">*</button> 
+            <button id="btn_1" class="numeros button">1</button> 
+            <button id="btn_2" class="numeros button">2</button> 
+            <button id="btn_3" class="numeros button">3</button> 
+            <button id="btn_4" class="numeros button">4</button> 
+            <button id="btn_5" class="numeros button">5</button> 
+            <button id="btn_6" class="numeros button">6</button> 
+            <button id="btn_7" class="numeros button">7</button> 
+            <button id="btn_8" class="numeros button">8</button> 
+            <button id="btn_9" class="numeros button">9</button> 
+            <button id="btn_cero" class="numeros button">0</button>
+            <button id="btn_restar" class="operadores button">-</button>  
+            <button id="btn_sumar" class="operadores button">+</button> 
+            <button id="btn_cambiar_signo button">+/-</button> 
+            <button id="btn_decimales button">.</button> 
+            <button id="btn_igual" class="operadores button grid-2">=</button> 
+           
+    </section>
+</div>
+
+    <script src="js/calculadora.js"></script>
+    <script>
+        (function (){
+            let textoPantalla = document.querySelector('#textoPantalla')
+            let btn_borrar_ultimo_digito = document.querySelector('#btn_borrar_ultimo_digito')
+            let btn_borrar_todo = document.querySelector('#btn_borrar_todo')
+            let btn_dividir = document.querySelector('#btn_dividir')
+            let btn_7 = document.querySelector('#btn_7')
+            let btn_8 = document.querySelector('#btn_8')
+            let btn_9 = document.querySelector('#btn_9')
+            let btn_multiplicar = document.querySelector('#btn_multiplicar')
+            let btn_4 = document.querySelector('#btn_4')
+            let btn_5 = document.querySelector('#btn_5')
+            let btn_6 = document.querySelector('#btn_6')
+            let btn_restar = document.querySelector('#btn_restar')
+            let btn_1 = document.querySelector('#btn_1')
+            let btn_2 = document.querySelector('#btn_2')
+            let btn_3 = document.querySelector('#btn_3')
+            let btn_igual = document.querySelector('#btn_igual')
+            let btn_0 = document.querySelector('#btn_0')
+            let btn_cambiar_signo = document.querySelector('#btn_cambiar_signo')
+            let btn_decimales = document.querySelector('#btn_decimales')
+            let btn_sumar = document.querySelector('#btn_sumar')
+
+            let calcu = new Calculadora();
+
+            document.querySelectorAll('.numeros').forEach(tag =>{
+                tag.addEventListener('click',ev =>{
+                    calcu.ponerdigito(ev.target.textContent);
+                    textoPantalla.value = calcu.pantalla;
+                }) 
+            })
+
+            document.querySelectorAll('.operadores').forEach(tag =>{
+                tag.addEventListener('click',ev =>{
+                    calcu.calcular(ev.target.textContent);
+                    textoPantalla.value = calcu.pantalla;
+                }) 
+            })
+            
+
+        })()
+    </script>
+</body>
+</html>

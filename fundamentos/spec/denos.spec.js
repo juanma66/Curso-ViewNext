@@ -1,6 +1,6 @@
-describe('Demo de la prueba',function(){
+/*xdescribe('Demo de la prueba',function(){
 
-describe('una anidada', function(){
+xdescribe('una anidada'x, function(){
 it('suma 2 + 2',function(){
  let a=2, b=2;
  let resul;
@@ -11,7 +11,7 @@ it('suma 2 + 2',function(){
 
 })
 
-             it('Este funciona siempre', function(){
+             xit('Este funciona siempre', function(){
 
                 expect(true).toBeTruthy()
              })
@@ -23,6 +23,6 @@ it('suma 2 + 2',function(){
 
 
 })
-   describe('otra suite', function(){
+   xdescribe('otra suite', function(){
 
-   })
+   })*/

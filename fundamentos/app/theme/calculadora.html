@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="js/calculadora2.js"></script>
+    <script>
+          
+          constructor(){
+              this.acum=0;
+              this.op='+';
+              this.pantalla='0';
+              this.resultado=true;
+          }
+
+          ponerdigito(num){
+              if(this.pantalla=='0'  || this.resultado){
+                 this.pantalla=num;
+                 this.resultado=falso;
+              }else{
+                  this.pantalla += num;
+              }
+        }
+
+
+    </script>
+</body>
+</html>
