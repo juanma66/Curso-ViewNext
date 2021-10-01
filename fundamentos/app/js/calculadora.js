@@ -36,9 +36,9 @@ class Calculadora{
     }
 
     borrar_digito(){
-     
+     if(operador)
     }
-
+}
     borrar_todo(){
 
     }
