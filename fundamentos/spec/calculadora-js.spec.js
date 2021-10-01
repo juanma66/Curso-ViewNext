@@ -23,13 +23,7 @@ describe('Calculadora',()=>{
         expect(resul).toBe(10)
     })
 
-    it('divide', ()=>{
-        let a = 20, b = 4;
-        let resul;
 
-        resul = divide(a , b)
-        expect(resul).toBe(5)
-    })
 
     it('poner_digito', () => {
         let c = new Calculadora();
@@ -48,7 +42,7 @@ describe('Calculadora',()=>{
         expect(c.pantalla).toBe('60');
     });
 
-    xit('borrar_digito', () => {
+    it('borrar_digito', () => {
         let c = new Calculadora();
         c.ponerdigito('3');
         c.borrar_digito();
