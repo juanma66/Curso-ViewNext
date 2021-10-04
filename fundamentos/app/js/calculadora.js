@@ -36,17 +36,35 @@ class Calculadora{
     }
 
 
-
-    borrar_digito() {
-        this.pantalla = '0';
+    borrar_digito(){
+        if (this.resultado || this.pantalla.length == 1 || (this.pantalla.length == 2 && this.pantalla.startsWith('-'))) {
+			this.pantalla = '0';
+			this.resultado = true;
+		} else
+        this.pantalla = this.pantalla.substr(0,
+            this.pantalla.length - 1);
     }
-    
-   borra_uno(){
-    document.getElementById('btn_borrar_ultimo_digito').addEventListener('click', () => {
-    var texto = document.getElementById('textoPantalla');
-    texto.value = texto.value.substring(0, texto.value.length - 1);
-              
-  });
-}
+
+    borrar_todo(){
+        this.acum = 0;
+        this.op = '+';
+        this.pantalla = '0';
+        this.resultado = true;
+    }
+
+    cambiar_signo(){
+        this.pantalla = (-this.pantalla).toString();
+        this.acum = (-this.acum);
+    }
+
+    poner_coma(){
+        if (this.resultado) {
+            this.pantalla = '0.';
+            this.resultado = false;
+        } else {
+            this.pantalla += '.';
+        }
+        
+    }
 
 }

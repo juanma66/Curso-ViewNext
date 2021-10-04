@@ -62,9 +62,10 @@
             let btn_decimales = document.querySelector('#btn_decimales')
             let btn_sumar = document.querySelector('#btn_sumar')
 
+
             let calcu = new Calculadora();
 
-              calcu.borra_uno();
+     
 
             document.querySelectorAll('.numeros').forEach(tag =>{
                 tag.addEventListener('click',ev =>{
@@ -80,11 +81,28 @@
                 }) 
             })
             
+           
 
-            btn_borrar_todo.addEventListener('click', () => {
-            calcu.borrar_digito();
-       
-              })
+            btn_borrar_ultimo_digito.addEventListener('click',ev =>{
+               calcu.borrar_digito(ev.target.textContent);
+               textoPantalla.value = calcu.pantalla;
+            })
+            
+            btn_borrar_todo.addEventListener('click',ev =>{
+               calcu.borrar_todo(ev.target.textContent);
+               textoPantalla.value = calcu.pantalla;
+            })
+
+            btn_cambiar_signo.addEventListener('click',ev =>{
+               calcu.cambiar_signo(ev.target.textContent);
+               textoPantalla.value = calcu.pantalla;
+            })
+
+            btn_decimales.addEventListener('click',ev =>{
+               calcu.poner_coma(ev.target.textContent);
+               textoPantalla.value = calcu.pantalla;
+            })
+  
   
 
         })()
