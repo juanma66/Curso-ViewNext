@@ -19,7 +19,7 @@ export class DemosComponent implements OnInit {
 
    resultado:string | null =null;
    visible=true;
-   estetica={importante:true, error:false, urgente:true};
+   estetica={importante: true, error: false, urgente: true};
    fontSize=14;
 
 
@@ -55,7 +55,7 @@ cambiar():void{
    }
 
    add(provincia:string):void{
-     const id=this.listado.length===0 ? 1 : (this.listado[this.listado.length -1].id+1);
+     const id=this.listado.length===0 ? 1 : (this.listado[this.listado.length -1].id + 1);
      this.listado.push({id, nombre: provincia});
      this.idProvincia=id;
   }
