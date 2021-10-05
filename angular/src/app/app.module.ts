@@ -11,6 +11,7 @@ import { SizerComponent } from './compartidos/sizer.component';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,7 @@ import { CalculadoraComponent } from './calculadora/calculadora.component';
     ElipsisPipe,
     SizerComponent,
     DinamicoComponent,
-    CalculadoraComponent
+    CalculadoraComponent,
   ],
   imports: [
     BrowserModule, FormsModule,
