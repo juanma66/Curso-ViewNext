@@ -8,7 +8,7 @@ import { DemosComponent } from './demos/demos.component';
 import { FormsModule } from '@angular/forms';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { NuevaCalculadoraComponent } from './nueva-calculadora/nueva-calculadora.component';
-import { MuCoreModule } from 'src/lib/mu-core';
+import { LoggerService, MuCoreModule } from 'src/lib/mu-core';
 import { MainModule } from './main';
 import { SecurityModule } from './security';
 import { CommonServicesModule } from './common-services';
@@ -27,7 +27,9 @@ import { CommonServicesModule } from './common-services';
     BrowserModule, FormsModule,
     AppRoutingModule, MuCoreModule, MainModule, CommonServicesModule, SecurityModule,
   ],
-  providers: [],
+  providers: [
+    LoggerService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
