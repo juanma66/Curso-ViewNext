@@ -6,75 +6,74 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calculadora.component.scss']
 })
 export class CalculadoraComponent implements OnInit {
-  subDisplayText = '0';
-  mainDisplayText = '0';
+  subpantalla = '';
+  pantalla = '';
   operand1: number=0;
   operand2: number=0;
-  operator = '';
+  operador = '';
   calculationString = '';
-  // This string  denotes the operation being performed
-  answered = false;
-  //  flag to check whether the solution has been processed
-  operatorSet = false;
+
+  contesta = false;
+  operadorSet = false;
 
   constructor() { }
-  pressKey(key: string) {
-    if (key === '/' || key === 'x' || key === '-' || key === '+') {
-      const lastKey = this.mainDisplayText[this.mainDisplayText.length - 1];
-      if (lastKey === '/' || lastKey === 'x' || lastKey === '-' || lastKey === '+') {
-        this.operatorSet = true;
+  presspulsa(pulsa: string) {
+    if (pulsa === '/' || pulsa === 'x' || pulsa === '-' || pulsa === '+') {
+      const lastpulsa = this.pantalla[this.pantalla.length - 1];
+      if (lastpulsa === '/' || lastpulsa === 'x' || lastpulsa === '-' || lastpulsa === '+') {
+        this.operadorSet = true;
       }
-      if ((this.operatorSet) || (this.mainDisplayText === '')) {
+      if ((this.operadorSet) || (this.pantalla === '')) {
         return;
       }
-      this.operand1 = parseFloat(this.mainDisplayText);
-      this.operator = key;
-      this.operatorSet = true;
+      this.operand1 = parseFloat(this.pantalla);
+      this.operador = pulsa;
+      this.operadorSet = true;
     }
-    if (this.mainDisplayText.length === 10) {
+    if (this.pantalla.length === 10) {
       return;
     }
-    this.mainDisplayText += key;
+    this.pantalla += pulsa;
   }
-  allClear() {
-    this.mainDisplayText = '';
-    this.subDisplayText = '';
-    this.operatorSet = false;
+  limpiar() {
+    this.pantalla = '';
+    this.subpantalla = '';
+    this.operadorSet = false;
   }
-  getAnswer() {
-    this.calculationString = this.mainDisplayText;
-    this.operand2 = parseFloat(this.mainDisplayText.split(this.operator)[1]);
-    if (this.operator === '/') {
-      this.subDisplayText = this.mainDisplayText;
-      this.mainDisplayText = (this.operand1 / this.operand2).toString();
-      this.subDisplayText = this.calculationString;
-      if (this.mainDisplayText.length > 9) {
-        this.mainDisplayText = this.mainDisplayText.substr(0, 9);
+  getCon() {
+    this.calculationString = this.pantalla;
+    this.operand2 = parseFloat(this.pantalla.split(this.operador)[1]);
+    if (this.operador === '/') {
+      this.subpantalla = this.pantalla;
+      this.pantalla = (this.operand1 / this.operand2).toString();
+      this.subpantalla = this.calculationString;
+      if (this.pantalla.length > 9) {
+        this.pantalla = this.pantalla.substr(0, 9);
       }
-    } else if (this.operator === 'x') {
-      this.subDisplayText = this.mainDisplayText;
-      this.mainDisplayText = (this.operand1 * this.operand2).toString();
-      this.subDisplayText = this.calculationString;
-      if (this.mainDisplayText.length > 9) {
-        this.mainDisplayText = 'ERROR';
-        this.subDisplayText = 'Range Exceeded';
+    } else if (this.operador === 'x') {
+      this.subpantalla = this.pantalla;
+      this.pantalla = (this.operand1 * this.operand2).toString();
+      this.subpantalla = this.calculationString;
+      if (this.pantalla.length > 9) {
+        this.pantalla = 'Error';
+        this.subpantalla = 'Fuera de rango';
       }
-    } else if (this.operator === '-') {
-      this.subDisplayText = this.mainDisplayText;
-      this.mainDisplayText = (this.operand1 - this.operand2).toString();
-      this.subDisplayText = this.calculationString;
-    } else if (this.operator === '+') {
-      this.subDisplayText = this.mainDisplayText;
-      this.mainDisplayText = (this.operand1 + this.operand2).toString();
-      this.subDisplayText = this.calculationString;
-      if (this.mainDisplayText.length > 9) {
-        this.mainDisplayText = 'ERROR';
-        this.subDisplayText = 'Range Exceeded';
+    } else if (this.operador === '-') {
+      this.subpantalla = this.pantalla;
+      this.pantalla = (this.operand1 - this.operand2).toString();
+      this.subpantalla = this.calculationString;
+    } else if (this.operador === '+') {
+      this.subpantalla = this.pantalla;
+      this.pantalla = (this.operand1 + this.operand2).toString();
+      this.subpantalla = this.calculationString;
+      if (this.pantalla.length > 9) {
+        this.pantalla = 'Error';
+        this.subpantalla = 'Fuera de rango';
       }
     } else {
-      this.subDisplayText = 'ERROR: Invalid Operation';
+      this.subpantalla = 'Error';
     }
-    this.answered = true;
+    this.contesta = true;
   }
 
   ngOnInit(): void {
