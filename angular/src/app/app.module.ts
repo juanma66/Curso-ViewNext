@@ -9,7 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { ElipsisPipe } from './compartidos/cadena.pipe';
 import { SizerComponent } from './compartidos/sizer.component';
 import { DinamicoComponent } from './dinamico/dinamico.component';
-import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { NuevaCalculadoraComponent } from './nueva-calculadora/nueva-calculadora.component';
 
 
@@ -21,7 +20,6 @@ import { NuevaCalculadoraComponent } from './nueva-calculadora/nueva-calculadora
     ElipsisPipe,
     SizerComponent,
     DinamicoComponent,
-    CalculadoraComponent,
     NuevaCalculadoraComponent,
   ],
   imports: [

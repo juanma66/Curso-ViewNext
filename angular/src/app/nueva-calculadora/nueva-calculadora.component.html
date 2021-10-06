@@ -4,9 +4,8 @@
     </header>
     <section class="wrapper">
         <input type="text" id="textoPantalla" class="resultado grid-4" value={{pantalla}} readonly >
-
-        <button id="btn_borrar_ultimo_digito" class="borrar_opc button" (click)="borrar_digito()">Borrar</button>
         <button id="btn_borrar_todo" class="borrar_opc button" (click)="borrar_todo()">C</button>
+        <button id="btn_borrar_ultimo_digito" class="borrar_opc button grid-" (click)="borrar_digito()">Borrar</button>
         <button id="btn_dividir" class="operadores button"  (click)="calcular('/')">/</button>
         <button id="btn_multiplicar" class="operadores button" (click)="calcular('*')">*</button>
         <button id="btn_1" class="numeros button" (click)="ponerdigito('1')">1</button>
