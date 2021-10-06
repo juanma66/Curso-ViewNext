@@ -10,6 +10,7 @@ import { ElipsisPipe } from './compartidos/cadena.pipe';
 import { SizerComponent } from './compartidos/sizer.component';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
+import { NuevaCalculadoraComponent } from './nueva-calculadora/nueva-calculadora.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { CalculadoraComponent } from './calculadora/calculadora.component';
     SizerComponent,
     DinamicoComponent,
     CalculadoraComponent,
+    NuevaCalculadoraComponent,
   ],
   imports: [
     BrowserModule, FormsModule,

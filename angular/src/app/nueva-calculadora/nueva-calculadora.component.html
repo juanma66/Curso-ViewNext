@@ -1,0 +1,30 @@
+<div class="container">
+    <header class="titulo">
+        <h1>Calculadora</h1>
+    </header>
+    <section class="wrapper">
+        <input type="text" id="textoPantalla" class="resultado grid-4" value={{pantalla}} readonly >
+
+        <button id="btn_borrar_ultimo_digito" class="borrar_opc button" (click)="borrar_digito()">Borrar</button>
+        <button id="btn_borrar_todo" class="borrar_opc button" (click)="borrar_todo()">C</button>
+        <button id="btn_dividir" class="operadores button"  (click)="calcular('/')">/</button>
+        <button id="btn_multiplicar" class="operadores button" (click)="calcular('*')">*</button>
+        <button id="btn_1" class="numeros button" (click)="ponerdigito('1')">1</button>
+        <button id="btn_2" class="numeros button" (click)="ponerdigito('2')">2</button>
+        <button id="btn_3" class="numeros button" (click)="ponerdigito('3')">3</button>
+        <button id="btn_4" class="numeros button" (click)="ponerdigito('4')">4</button>
+        <button id="btn_5" class="numeros button" (click)="ponerdigito('5')">5</button>
+        <button id="btn_6" class="numeros button" (click)="ponerdigito('6')">6</button>
+        <button id="btn_7" class="numeros button" (click)="ponerdigito('7')">7</button>
+        <button id="btn_8" class="numeros button" (click)="ponerdigito('8')">8</button>
+        <button id="btn_9" class="numeros button" (click)="ponerdigito('9')">9</button>
+        <button id="btn_cero" class="numeros button" (click)="ponerdigito('0')">0</button>
+        <button id="btn_restar" class="operadores button" (click)="calcular('-')">-</button>
+        <button id="btn_sumar" class="operadores button" (click)="calcular('+')">+</button>
+        <button id="btn_cambiar_signo button" (click)="cambiar_signo()">+/-</button>
+        <button id="btn_decimales button" (click)="poner_coma()">.</button>
+        <button id="btn_igual" class="operadores button grid-2" (click)="calcular('=')">=</button>
+
+</section>
+</div>
+
