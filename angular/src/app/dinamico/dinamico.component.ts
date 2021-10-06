@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DemosComponent } from '../demos/demos.component';
-import { HomeComponent } from '../home/home.component';
+import { HomeComponent } from '../main/home/home.component';
 import { NuevaCalculadoraComponent } from '../nueva-calculadora/nueva-calculadora.component';
 
 @Component({

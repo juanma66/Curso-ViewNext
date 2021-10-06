@@ -11,3 +11,5 @@ return (!maxlen || maxlen < 2 || !value || value.length
 '\u2026');
 }
 }
+
+export const PIPES_CADENA=[ElipsisPipe];
