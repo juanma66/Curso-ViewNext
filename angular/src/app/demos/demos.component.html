@@ -1,3 +1,9 @@
+<p>
+  <input type="button" value="Error" (click)="vm.add('Esto es una notificación de error')" >
+  <input type="button" value="Warn" (click)="vm.add('Esta notificación esun aviso', vm.NotificationType.warn)" >
+ </p>
+
+
 <h1>Hola {{Nombre | elipsis:10 | uppercase}}</h1>
 
 <p>

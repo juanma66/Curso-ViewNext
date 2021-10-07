@@ -12,6 +12,7 @@ import { LoggerService, MuCoreModule } from 'src/lib/mu-core';
 import { MainModule } from './main';
 import { SecurityModule } from './security';
 import { CommonServicesModule } from './common-services';
+import { FormularioComponent } from './formulario/formulario.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { CommonServicesModule } from './common-services';
     DemosComponent,
     DinamicoComponent,
     NuevaCalculadoraComponent,
+    FormularioComponent,
   ],
 
   imports: [

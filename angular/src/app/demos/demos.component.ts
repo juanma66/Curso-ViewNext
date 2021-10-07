@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Unsubscribable } from 'rxjs';
 import { LoggerService } from 'src/lib/mu-core';
+import { NotificationService, NotificationType } from '../common-services';
 
 @Component({
   selector: 'app-demos',
   templateUrl: './demos.component.html',
   styleUrls: ['./demos.component.scss']
 })
-export class DemosComponent implements OnInit {
+export class DemosComponent implements OnInit, OnDestroy {
+  private suscriptor: Unsubscribable | undefined;
+
 
  private nombre: string='mundo';
  listado=[
@@ -25,11 +29,17 @@ export class DemosComponent implements OnInit {
 
 
 
-  constructor(private log: LoggerService) {
-    log.error('Es un error');
-    log.warn('Es un warn');
-    log.info('Es un info');
-    log.log('Es un log');
+  constructor(private log: LoggerService, public vm: NotificationService) {
+    // log.error('Es un error');
+    // log.warn('Es un warn');
+    // log.info('Es un info');
+    // log.log('Es un log');
+  }
+
+  ngOnDestroy(): void {
+    if (this.suscriptor) {
+      this.suscriptor.unsubscribe();
+      }
   }
 
   public get Nombre():string{return this.nombre;}
@@ -67,6 +77,8 @@ cambiar():void{
   }
 
   ngOnInit(): void {
+
+
   }
 
 }
