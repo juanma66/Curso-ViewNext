@@ -13,6 +13,11 @@ import { MainModule } from './main';
 import { SecurityModule } from './security';
 import { CommonServicesModule } from './common-services';
 import { FormularioComponent } from './formulario/formulario.component';
+import { ClienteFormularioComponent } from './cliente-formulario/cliente-formulario.component';
+import { FormButtonsComponent } from './common-component/form-buttons/form-buttons.component';
+import { ShowErrorsMessageComponent } from './common-component/show-errors-message/show-errors-message.component';
+import { CommonModule } from '@angular/common';
+import { CommonComponentModule } from './common-component/common-component.module';
 
 
 @NgModule({
@@ -23,11 +28,14 @@ import { FormularioComponent } from './formulario/formulario.component';
     DinamicoComponent,
     NuevaCalculadoraComponent,
     FormularioComponent,
+    ClienteFormularioComponent,
+
   ],
 
   imports: [
     BrowserModule, FormsModule,
-    AppRoutingModule, MuCoreModule, MainModule, CommonServicesModule, SecurityModule,
+    CommonComponentModule,
+    AppRoutingModule, MuCoreModule, MainModule, CommonServicesModule, SecurityModule,MainModule,
   ],
   providers: [
     LoggerService,
