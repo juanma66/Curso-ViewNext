@@ -19,8 +19,9 @@
   <div>
     <label for="apellidos">Apellidos</label>
     <input type="text" id="apellidos" name="apellidos" [(ngModel)]="vm.Elemento.apellidos" #apellidos="ngModel"
-      minlength="2" maxlength="10" >
-    <output class="error" [hidden]="!apellidos.errors?.minlength && !apellidos.errors?.maxlength">Debe tener entre 2 y 10 letras. </output>
+      minlength="2" maxlength="10" myErrorsMessage>
+
+    <!-- <output class="error" [hidden]="!apellidos.errors?.minlength && !apellidos.errors?.maxlength">Debe tener entre 2 y 10 letras. </output> -->
   </div>
   <div>
     <label for="correo">Correo</label>
