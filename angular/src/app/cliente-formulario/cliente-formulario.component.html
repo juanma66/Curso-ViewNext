@@ -1,0 +1,90 @@
+<form #miForm="ngForm">
+  <header><h2>Login</h2></header>
+  <div>
+    <label for="idCliente">*Id Cliente</label>
+    <input
+      type="number"
+      name="idCliente"
+      [(ngModel)]="vm.Elemento.idCliente"
+      placeholder="Id Cliente"
+      id="idCliente"
+      min="0"
+      required
+    />
+  </div>
+
+  <div>
+    <label for="tienda">*Tienda</label>
+    <select name="tienda" id="tienda"
+    name="tienda"
+    [(ngModel)]="vm.Elemento.tienda"
+    #tienda="ngModel">
+      <option value="1" selected>Tienda 1</option>
+      <option value="2">Tienda 2</option>
+      <option value="3">Tienda 3</option>
+    </select>
+  </div>
+  <div>
+    <label for="nombre">*Nombre</label>
+    <input
+      type="text"
+      name="nombre"
+      placeholder="Nombre"
+      id="nombre"
+      [(ngModel)]="vm.Elemento.nombre"
+      #nombre="ngModel"
+      minlength="2"
+      maxlength="50"
+      minlength="2"
+      maxlength="10"
+      required
+    />
+  </div>
+  <div>
+    <label for="apellidos">*Apellido</label>
+    <input
+      type="text"
+      name="apellidos"
+      placeholder="Apellido"
+      id="apellidos"
+      minlength="2"
+      maxlength="50"
+      [(ngModel)]="vm.Elemento.apellidos"
+      #apellidos="ngModel"
+      minlength="2"
+      maxlength="10"
+    />
+  </div>
+  <div>
+    <label for="correo">*Correo</label>
+    <input type="email" name="correo"
+    [(ngModel)]="vm.Elemento.correo"
+    #correo="ngModel" placeholder="Email" id="correo" required />
+  </div>
+  <div>
+    <label for="direccion">*Dirección</label>
+    <input
+      type="text"
+      name="direccion"
+      [(ngModel)]="vm.Elemento.direccion"
+      #direccion="ngModel"
+      placeholder="Dirección"
+      id="direccion"
+      required
+    />
+  </div>
+  <div>
+    <label for="fechs">*Fecha</label>
+    <input type="date" name="fecha" id="fecha" [(ngModel)]="vm.Elemento.fecha"
+    #fecha="ngModel"/>
+  </div>
+
+  <div>
+    <app-form-buttons (send)="vm.send()"
+      (cancel)="vm.cancel()"
+      [IsVisible]="miForm.invalid"
+      ></app-form-buttons>
+  </div>
+
+
+</form>
