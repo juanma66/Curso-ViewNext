@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
+import { Directive, EventEmitter, HostBinding, HostListener, Input, Output, SimpleChanges } from '@angular/core';
 
 @Directive({ selector: `[myWinConfirm]` })
 export class WindowConfirmDirective {
@@ -16,10 +16,21 @@ export class WindowConfirmDirective {
   @HostListener('mouseup') hasReleased() { this.isPressed = false; }
 }
 
+
+
+
 @Directive({ selector: '[show]' })
 export class ShowDirective {
   @HostBinding('hidden') hidden: boolean = false;
   @Input('show') set show(value: boolean) { this.hidden = !value; }
 }
 
-export const DIRECTIVAS_ATRIBUTO = [ WindowConfirmDirective, ShowDirective, ]
+
+@Directive({ selector: `[myErrorsMessage]` })
+export class myErrorsMessageDirective {
+  @Output('myErrorsMessage') winConfirm: EventEmitter<any> = new EventEmitter();
+
+}
+
+
+export const DIRECTIVAS_ATRIBUTO = [ WindowConfirmDirective, ShowDirective, myErrorsMessageDirective, ]
