@@ -48,7 +48,9 @@ export class ClienteViewModel {
   }
 
   public delete() {
-
+       if(!window.confirm("¿Seguro?"))return;{
+         this.notify.add("Borrado");
+       }
   }
 
   public cancel() {
@@ -84,6 +86,8 @@ export class ClienteViewModel {
   styleUrls: ['./cliente-formulario.component.scss']
 })
 export class ClienteFormularioComponent implements OnInit {
+
+    errorObligatorio:string='Campo obligado';
 
   constructor(public vm: ClienteViewModel) { }
 

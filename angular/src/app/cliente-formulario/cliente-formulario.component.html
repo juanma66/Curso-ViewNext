@@ -38,7 +38,7 @@
       minlength="2"
       maxlength="10"
       required
-    />
+    /><app-show-errors-message [errors]="nombre.errors"></app-show-errors-message>
   </div>
   <div>
     <label for="apellidos">*Apellido</label>
@@ -54,12 +54,14 @@
       minlength="2"
       maxlength="10"
     />
+    <app-show-errors-message [errors]="apellidos.errors"></app-show-errors-message>
   </div>
   <div>
     <label for="correo">*Correo</label>
     <input type="email" name="correo"
     [(ngModel)]="vm.Elemento.correo"
     #correo="ngModel" placeholder="Email" id="correo" required />
+    <app-show-errors-message [errors]="correo.errors"></app-show-errors-message>
   </div>
   <div>
     <label for="direccion">*Dirección</label>
@@ -71,12 +73,13 @@
       placeholder="Dirección"
       id="direccion"
       required
-    />
+    /><app-show-errors-message [errors]="direccion.errors"></app-show-errors-message>
   </div>
   <div>
     <label for="fechs">*Fecha</label>
     <input type="date" name="fecha" id="fecha" [(ngModel)]="vm.Elemento.fecha"
     #fecha="ngModel"/>
+    <app-show-errors-message [errors]="fecha.errors"></app-show-errors-message>
   </div>
 
   <div>
