@@ -106,4 +106,19 @@ export class EqualValidator implements Validator {
   }
 }
 
+
+
+
+
+@Directive({
+  selector: '[fechas]',
+  providers: [{ provide: NG_VALIDATORS, useExisting: UppercaseValidator, multi: true }]
+})
+export class fechaValidator implements Validator {
+  validate(control: AbstractControl): ValidationErrors | null {
+    Date
+    return UppercaseValidation()(control);
+  }
+}
+
 export const MIS_VALIDADORES = [UppercaseValidator, NIFValidator, TypeValidator, EqualValidator, ]

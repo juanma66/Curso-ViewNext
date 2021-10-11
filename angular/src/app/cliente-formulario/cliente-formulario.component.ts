@@ -11,17 +11,17 @@ export interface Cliente {
   apellidos: string;
   correo: string | null;
   direccion: string | null;
-  fecha:Date | null;
-
+  fechaInicio:Date | null;
+  fechaFinal:Date | null;
 
 }
 
 @Injectable({providedIn: 'root'})
 export class ClienteViewModel {
   Listado: Array<Cliente> = [
-    { idCliente: 1, tienda:'3',nombre: 'Pepito', apellidos: 'Grillo', correo: 'pepito@grillo',direccion:'calle',fecha:null}
+    { idCliente: 1, tienda:'3',nombre: 'Pepito', apellidos: 'Grillo', correo: 'pepito@grillo',direccion:'calle',fechaInicio:null, fechaFinal:null}
   ]
-  Elemento: Cliente = { idCliente: null, tienda:'',nombre: '', apellidos: '', correo: null, direccion:null, fecha:null};
+  Elemento: Cliente = { idCliente: null, tienda:'',nombre: '', apellidos: '', correo: null, direccion:null, fechaInicio:null, fechaFinal:null};
   IsAdd = true;
 
   constructor(private notify: NotificationService) {
@@ -33,7 +33,7 @@ export class ClienteViewModel {
   }
 
   public add() {
-    this.Elemento = { idCliente: null,tienda:'', nombre: '', apellidos: '', correo: null, direccion:null,fecha:null}
+    this.Elemento = { idCliente: null,tienda:'', nombre: '', apellidos: '', correo: null, direccion:null,fechaInicio:null, fechaFinal:null}
     this.IsAdd = true;
   }
 
@@ -62,7 +62,8 @@ export class ClienteViewModel {
       correo: null,
       direccion: null,
       tienda: null,
-      fecha: null,
+      fechaInicio:null,
+      fechaFinal:null
 
     };
   }
