@@ -18,7 +18,7 @@ import { FormButtonsComponent } from './common-component/form-buttons/form-butto
 import { ShowErrorsMessageComponent } from './common-component/show-errors-message/show-errors-message.component';
 import { CommonModule } from '@angular/common';
 import { CommonComponentModule } from './common-component/common-component.module';
-
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,6 +36,7 @@ import { CommonComponentModule } from './common-component/common-component.modul
     BrowserModule, FormsModule,
     CommonComponentModule,
     AppRoutingModule, MuCoreModule, MainModule, CommonServicesModule, SecurityModule,MainModule,
+    HttpClientModule,
   ],
   providers: [
     LoggerService,
