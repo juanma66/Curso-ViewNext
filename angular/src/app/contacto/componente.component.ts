@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonComponentModule } from '../common-component/common-component.module';
 import { ContactosViewModelService } from './servicios.service';
 
 @Component({
