@@ -7,6 +7,7 @@ import { MIS_VALIDADORES } from './directives/validadores.directive';
 import { UnlessDirective } from './directives/estructurales.directive';
 
 
+
 @NgModule({
   declarations: [
        SizerComponent, PIPES_CADENA, DIRECTIVAS_ATRIBUTO,MIS_VALIDADORES,UnlessDirective,

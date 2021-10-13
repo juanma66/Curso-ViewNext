@@ -19,11 +19,11 @@ import { ShowErrorsMessageComponent } from './common-component/show-errors-messa
 import { CommonModule } from '@angular/common';
 import { CommonComponentModule } from './common-component/common-component.module';
 import {HttpClientModule} from '@angular/common/http';
+import { ContactoModule } from './contacto/contacto.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-
     DemosComponent,
     DinamicoComponent,
     NuevaCalculadoraComponent,
@@ -36,7 +36,7 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule, FormsModule,
     CommonComponentModule,
     AppRoutingModule, MuCoreModule, MainModule, CommonServicesModule, SecurityModule,MainModule,
-    HttpClientModule,
+    HttpClientModule,ContactoModule
   ],
   providers: [
     LoggerService,

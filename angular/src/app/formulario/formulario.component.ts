@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { NotificationService, NotificationType } from '../common-services';
@@ -33,6 +34,7 @@ export class PersonasViewModel {
   }
 
   public edit() {
+
     this.Elemento = this.Listado[0];
     this.IsAdd = false;
   }
