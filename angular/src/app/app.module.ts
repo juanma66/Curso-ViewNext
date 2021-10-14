@@ -20,6 +20,7 @@ import { CommonModule } from '@angular/common';
 import { CommonComponentModule } from './common-component/common-component.module';
 import {HttpClientModule} from '@angular/common/http';
 import { ContactoModule } from './contacto/contacto.module';
+import { HeaderComponent } from './main/header/header.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +31,21 @@ import { ContactoModule } from './contacto/contacto.module';
     FormularioComponent,
     ClienteFormularioComponent,
 
+
   ],
 
   imports: [
-    BrowserModule, FormsModule,
+    BrowserModule,
+    FormsModule,
     CommonComponentModule,
-    AppRoutingModule, MuCoreModule, MainModule, CommonServicesModule, SecurityModule,MainModule,
-    HttpClientModule,ContactoModule
+    AppRoutingModule,
+    MuCoreModule,
+    MainModule,
+    CommonServicesModule,
+    SecurityModule,
+    MainModule,
+    HttpClientModule,
+    ContactoModule,
   ],
   providers: [
     LoggerService,

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { NotificationService } from '../common-services';
 import { LoggerService } from 'src/lib/mu-core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -14,22 +15,14 @@ export class ContactosViewModelService {
   protected elemento: any = {};
   protected idOriginal: any = null;
 
+  protected listURL = '/contactos';
+
   constructor(
     protected notify: NotificationService,
     protected out: LoggerService,
-    protected dao: ContactosDAOService
+    protected dao: ContactosDAOService,
+    protected router: Router
   ) {}
-
-
-
-
-
-
-
-
-
-
-
 
   public get Modo(): ModoCRUD {
     return this.modo;
@@ -93,7 +86,8 @@ export class ContactosViewModelService {
   public cancel(): void {
     this.elemento = {};
     this.idOriginal = null;
-    this.list();
+    // this.list();
+    this.router.navigateByUrl(this.listURL);
   }
 
   public send(): void {
