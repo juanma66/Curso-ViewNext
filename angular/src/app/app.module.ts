@@ -10,7 +10,7 @@ import { DinamicoComponent } from './dinamico/dinamico.component';
 import { NuevaCalculadoraComponent } from './nueva-calculadora/nueva-calculadora.component';
 import { LoggerService, MuCoreModule } from 'src/lib/mu-core';
 import { MainModule } from './main';
-import { SecurityModule } from './security';
+
 import { CommonServicesModule } from './common-services';
 import { FormularioComponent } from './formulario/formulario.component';
 import { ClienteFormularioComponent } from './cliente-formulario/cliente-formulario.component';
@@ -42,7 +42,7 @@ import { HeaderComponent } from './main/header/header.component';
     MuCoreModule,
     MainModule,
     CommonServicesModule,
-    SecurityModule,
+
     MainModule,
     HttpClientModule,
     ContactoModule,

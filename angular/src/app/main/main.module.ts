@@ -6,7 +6,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HeaderComponent } from './header/header.component';
 import { AjaxWaitComponent } from './ajax-wait';
 import { CommonServicesModule } from '../common-services';
-import { SecurityModule } from '../security';
 import { RouterModule } from '@angular/router';
 
 
@@ -33,8 +32,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
      CommonServicesModule,
-     SecurityModule,
-     RouterModule.forChild([]),
+
+     RouterModule.forChild([])
   ]
 })
 export class MainModule {
