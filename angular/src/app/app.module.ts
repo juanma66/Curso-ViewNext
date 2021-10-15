@@ -42,7 +42,6 @@ import { HeaderComponent } from './main/header/header.component';
     MuCoreModule,
     MainModule,
     CommonServicesModule,
-
     MainModule,
     HttpClientModule,
     ContactoModule,

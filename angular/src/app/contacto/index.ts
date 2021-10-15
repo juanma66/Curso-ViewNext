@@ -1,1 +1,2 @@
-export * from './servicios.service';
+export * from './componente.component';
+export * from './contacto.module';

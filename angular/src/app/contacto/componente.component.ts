@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { CommonComponentModule } from '../common-component/common-component.module';
 import { ContactosViewModelService } from './servicios.service';
 
 @Component({
@@ -25,6 +24,7 @@ export class ContactosComponent implements OnInit {
   styleUrls: ['./componente.component.scss']
  })
  export class ContactosListComponent implements OnInit {
+  public page: number = 0;
   constructor(protected vm: ContactosViewModelService) { }
   public get VM(): ContactosViewModelService { return this.vm; }
   ngOnInit(): void {

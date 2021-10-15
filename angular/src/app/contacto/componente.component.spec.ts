@@ -1,25 +1,25 @@
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { ComponenteComponent } from './componente.component';
+import { ContactosComponent } from './componente.component';
 
-// describe('ComponenteComponent', () => {
-//   let component: ComponenteComponent;
-//   let fixture: ComponentFixture<ComponenteComponent>;
+describe('ContactosComponent', () => {
+  let component: ContactosComponent;
+  let fixture: ComponentFixture<ContactosComponent>;
 
-//   beforeEach(async () => {
-//     await TestBed.configureTestingModule({
-//       declarations: [ ComponenteComponent ]
-//     })
-//     .compileComponents();
-//   });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ ContactosComponent ]
+    })
+    .compileComponents();
+  });
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(ComponenteComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ContactosComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

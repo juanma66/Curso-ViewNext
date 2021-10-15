@@ -1,5 +1,5 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NuevaCalculadoraComponent } from './nueva-calculadora.component';
 
 describe('NuevaCalculadoraComponent', () => {
@@ -8,7 +8,9 @@ describe('NuevaCalculadoraComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NuevaCalculadoraComponent ]
+      declarations: [ NuevaCalculadoraComponent ],
+      providers: [],
+      schemas: [NO_ERRORS_SCHEMA],
     })
     .compileComponents();
   });
