@@ -21,6 +21,8 @@ import { CommonComponentModule } from './common-component/common-component.modul
 import {HttpClientModule} from '@angular/common/http';
 import { ContactoModule } from './contacto/contacto.module';
 import { HeaderComponent } from './main/header/header.component';
+import { BlogModule } from './blog';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { HeaderComponent } from './main/header/header.component';
     NuevaCalculadoraComponent,
     FormularioComponent,
     ClienteFormularioComponent,
+
 
 
   ],
@@ -45,6 +48,7 @@ import { HeaderComponent } from './main/header/header.component';
     MainModule,
     HttpClientModule,
     ContactoModule,
+    BlogModule,
   ],
   providers: [
     LoggerService,
