@@ -18,10 +18,11 @@ import { FormButtonsComponent } from './common-component/form-buttons/form-butto
 import { ShowErrorsMessageComponent } from './common-component/show-errors-message/show-errors-message.component';
 import { CommonModule } from '@angular/common';
 import { CommonComponentModule } from './common-component/common-component.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { ContactoModule } from './contacto/contacto.module';
 import { HeaderComponent } from './main/header/header.component';
-import { BlogModule } from './blog';
+import { BlogModule } from './blog/blog.module';
+import { SecurityModule } from './security';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { BlogModule } from './blog';
     CommonServicesModule,
     MainModule,
     HttpClientModule,
+    SecurityModule,
     ContactoModule,
     BlogModule,
   ],

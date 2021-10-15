@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { BlogViewModelService } from './servicios.service';
 
 @Component({
-  selector: 'app-componente',
+  selector: 'app-blog',
   templateUrl: './tmpl-anfitrion.component.html',
   styleUrls: ['./componente.component.scss']
 })

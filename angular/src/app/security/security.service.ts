@@ -111,19 +111,19 @@ export class User {
 
 @Injectable({providedIn: 'root'})
 export class RegisterUserDAO  {
-  //private baseUrl = environment.securityApiURL + 'register ';
+  private baseUrl = environment.securityApiURL + 'register ';
   private options = { withCredentials: true };
 
   constructor(private http: HttpClient) { }
 
   add(item: User)  {
-   // return this.http.post(this.baseUrl, item);
+    return this.http.post(this.baseUrl, item);
   }
 
   get() {
-    //return this.http.get<User>(this.baseUrl, this.options);
+    return this.http.get<User>(this.baseUrl, this.options);
   }
   change(item: User) {
-   // return this.http.put(this.baseUrl, item, this.options);
+    return this.http.put(this.baseUrl, item, this.options);
   }
 }

@@ -5,6 +5,7 @@ import { ContactosAddComponent, ContactosComponent, ContactosEditComponent, Cont
 import { DemosComponent } from './demos/demos.component';
 import { HomeComponent, PageNotFoundComponent } from './main';
 import { NuevaCalculadoraComponent } from './nueva-calculadora/nueva-calculadora.component';
+import { RegisterUserComponent } from './security';
 
 const routes: Routes = [
   {path:'', pathMatch:'full',component:HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
     { path: ':id', component: ContactosViewComponent},
     { path: ':id/:kk', component: ContactosViewComponent},
     ]},
+
     { path: 'blog', children: [
       { path: '', component: BlogListComponent},
       { path: 'add', component: BlogAddComponent},
@@ -26,8 +28,12 @@ const routes: Routes = [
       { path: ':id', component: BlogViewComponent},
       { path: ':id/:kk', component: BlogViewComponent},
       ]},
+
   { path: 'antonie/hasted', redirectTo: '/contactos/27'},
   { path: 'config', loadChildren: () => import('./config/config.module').then(mod => mod.ConfigModule)},
+ {path: 'registro', component:RegisterUserComponent},
+
+
   { path:'404.html',component:PageNotFoundComponent},
   { path: '**',component:PageNotFoundComponent},
 ];

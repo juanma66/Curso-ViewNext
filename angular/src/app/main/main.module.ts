@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { AjaxWaitComponent } from './ajax-wait';
 import { CommonServicesModule } from '../common-services';
 import { RouterModule } from '@angular/router';
+import { SecurityModule } from '../security';
 
 
 
@@ -31,7 +32,7 @@ import { RouterModule } from '@angular/router';
 
   imports: [
     CommonModule,
-     CommonServicesModule,
+     CommonServicesModule,SecurityModule,
 
      RouterModule.forChild([])
   ]

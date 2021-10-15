@@ -1,37 +1,62 @@
 <table class="table table-striped table-hover">
   <thead>
-  <tr class="table-info">
-  <th class="display-4">Lista de contactos</th>
-  <th class="text-end">
-  <button class="btn btn-success" routerLink="add"><i class="fas fa-plus"></i> Añadir</button>
-  </th>
-  </tr>
+    <tr class="table-info">
+      <th class="display-4">Blog</th>
+      <th class="text-end">
+        <button class="btn btn-success" routerLink="add">
+          <i class="fas fa-plus"></i> Añadir
+        </button>
+      </th>
+    </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let item of VM.Listado">
-  <td>
-  <div class="container">
-  <div class="row">
-  <div class="col-md-2">
-  <img class="rounded-circle float-left" src="{{item.avatar}}"
-  alt="Foto de {{item.nombre}} {{item.apellidos}}" width="75" height="75">
-  </div>
-  <div class="col-md-10">
-  <a class="btn btn-link btn-lg px-0" routerLink="{{item.id}}/{{item.nombre}}-{{item.apellidos}}">
-  {{item.tratamiento}} {{item.nombre}} {{item.apellidos}}</a>
-  <br><b>Tlfn.:</b> {{item.telefono}} <b>Correo:</b> {{item.email}}
-  </div>
-  </div>
-  </div>
-  </td>
-  <td class="align-middle text-end"><div class="btn-group" role="group">
-  <button class="btn btn-info" routerLink="{{item.id}}/{{item.nombre}}-{{item.apellidos}}">
-  <i class="fas fa-eye"></i></button>
-  <button class="btn btn-success" [routerLink]="[item.id, 'edit']"><i class="fas fa-pen"></i></button>
-  <button class="btn btn-danger" (click)="VM.delete(item.id)"><i class="far fa-trash-alt"></i></button>
-  </div>
-  </td>
-  </tr>
+    <tr *ngFor="let item of VM.Listado">
+      <td>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-2">
+              <img
+                class="rounded-circle float-left"
+                src="{{ item.titulo }}"
+                alt="Foto de {{ item.titulo }} {{ item.texto }}"
+                width="75"
+                height="75"
+              />
+            </div>
+            <div class="col-md-10">
+              <a
+                class="btn btn-link btn-lg px-0"
+                routerLink="{{ item.id }}/{{ item.autor }}-{{ item.titulo }}"
+              >
+                {{ item.tratamiento }} {{ item.autor }} {{ item.apellidos }}</a
+              >
+              <br /><b>Titulo</b> {{ item.titulo }} <b>Texto:</b>
+              {{ item.titulo }}
+            </div>
+          </div>
+        </div>
+      </td>
+      <td class="align-middle text-end">
+        <div class="btn-group" role="group">
+          <button
+            class="btn btn-info"
+            routerLink="{{ item.id }}/{{ item.autor }}-{{ item.titulo }}"
+          >
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="btn btn-success" [routerLink]="[item.id, 'edit']">
+            <i class="fas fa-pen"></i>
+          </button>
+          <button class="btn btn-danger" (click)="VM.delete(item.id)">
+            <i class="far fa-trash-alt"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
   </tbody>
- </table>
- <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+</table>
+<pagination-controls
+  (pageChange)="page = $event"
+  previousLabel="Anterior"
+  nextLabel="Siguiente"
+></pagination-controls>
