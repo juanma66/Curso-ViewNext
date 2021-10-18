@@ -54,6 +54,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     BlogModule,
     NgxPaginationModule,
 
+
   ],
   providers: [
     LoggerService,
