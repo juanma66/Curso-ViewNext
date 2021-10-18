@@ -8,6 +8,7 @@ import { AjaxWaitComponent } from './ajax-wait';
 import { CommonServicesModule } from '../common-services';
 import { RouterModule } from '@angular/router';
 import { SecurityModule } from '../security';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -18,6 +19,7 @@ import { SecurityModule } from '../security';
     PageNotFoundComponent,
     HeaderComponent,
     AjaxWaitComponent,
+    FooterComponent,
 
   ],
 
@@ -27,6 +29,7 @@ import { SecurityModule } from '../security';
     PageNotFoundComponent,
     HeaderComponent,
     AjaxWaitComponent,
+    FooterComponent,
   ],
 
 
