@@ -23,6 +23,7 @@ import { ContactoModule } from './contacto/contacto.module';
 import { HeaderComponent } from './main/header/header.component';
 import { BlogModule } from './blog/blog.module';
 import { SecurityModule } from './security';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -51,6 +52,8 @@ import { SecurityModule } from './security';
     SecurityModule,
     ContactoModule,
     BlogModule,
+    NgxPaginationModule,
+
   ],
   providers: [
     LoggerService,
