@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { DemosComponent } from './demos/demos.component';
 import { FormsModule } from '@angular/forms';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { NuevaCalculadoraComponent } from './nueva-calculadora/nueva-calculadora.component';
 import { LoggerService, MuCoreModule } from 'src/lib/mu-core';
 import { MainModule } from './main';
-
 import { CommonServicesModule } from './common-services';
 import { FormularioComponent } from './formulario/formulario.component';
 import { ClienteFormularioComponent } from './cliente-formulario/cliente-formulario.component';
@@ -24,6 +21,11 @@ import { HeaderComponent } from './main/header/header.component';
 import { BlogModule } from './blog/blog.module';
 import { SecurityModule } from './security';
 import { NgxPaginationModule } from 'ngx-pagination';
+import {EditorModule} from 'primeng/editor';
+import {InplaceModule} from 'primeng/inplace';
+
+
+
 
 
 @NgModule({
@@ -34,7 +36,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NuevaCalculadoraComponent,
     FormularioComponent,
     ClienteFormularioComponent,
-
 
 
   ],
@@ -53,7 +54,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ContactoModule,
     BlogModule,
     NgxPaginationModule,
-
+    EditorModule,InplaceModule,
 
   ],
   providers: [
