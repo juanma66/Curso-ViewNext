@@ -69,7 +69,17 @@ public class Film implements Serializable {
 	private List<Inventory> inventories;
 
 	public Film() {
+		
 	}
+	
+	
+
+	public Film(int filmId) {
+		super();
+		this.filmId = filmId;
+	}
+
+
 
 	public int getFilmId() {
 		return this.filmId;

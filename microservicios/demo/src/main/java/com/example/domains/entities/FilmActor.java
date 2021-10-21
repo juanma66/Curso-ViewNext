@@ -38,6 +38,12 @@ public class FilmActor implements Serializable {
 		return this.id;
 	}
 
+	public FilmActor(Actor actor, Film film) {
+		super();
+		this.actor = actor;
+		this.film = film;
+	}
+
 	public void setId(FilmActorPK id) {
 		this.id = id;
 	}
@@ -65,5 +71,8 @@ public class FilmActor implements Serializable {
 	public void setFilm(Film film) {
 		this.film = film;
 	}
+	
+	
+	
 
 }
