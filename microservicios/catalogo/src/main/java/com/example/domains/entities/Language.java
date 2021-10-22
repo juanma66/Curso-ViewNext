@@ -3,6 +3,7 @@ package com.example.domains.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.example.domains.core.EntityBase;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,7 +18,7 @@ import java.util.List;
 @Entity
 @Table(name="language")
 @NamedQuery(name="Language.findAll", query="SELECT l FROM Language l")
-public class Language implements Serializable {
+public class Language extends EntityBase<Language> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

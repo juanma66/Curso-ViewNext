@@ -2,49 +2,47 @@ package com.example.domains.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import java.sql.Timestamp;
 
 
 /**
- * The persistent class for the film_actor database table.
+ * The persistent class for the film_category database table.
  * 
  */
 @Entity
-@Table(name="film_actor")
-@NamedQuery(name="FilmActor.findAll", query="SELECT f FROM FilmActor f")
-public class FilmActor implements Serializable {
+@Table(name="film_category")
+@NamedQuery(name="FilmCategory.findAll", query="SELECT f FROM FilmCategory f")
+public class FilmCategory implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private FilmActorPK id;
+	private FilmCategoryPK id;
 
 	@Column(name="last_update")
 	private Timestamp lastUpdate;
 
-	//bi-directional many-to-one association to Actor
+	//bi-directional many-to-one association to Category
 	@ManyToOne
-	@JoinColumn(name="actor_id", insertable=false, updatable=false)
-	private Actor actor;
+	@JoinColumn(name="category_id", insertable=false, updatable=false)
+	@NotNull
+	private Category category;
 
 	//bi-directional many-to-one association to Film
 	@ManyToOne
 	@JoinColumn(name="film_id", insertable=false, updatable=false)
+	@NotNull
 	private Film film;
 
-	public FilmActor() {
+	public FilmCategory() {
 	}
 
-	public FilmActor(Film film, Actor actor) {
-		super();
-		this.film = film;
-		this.actor = actor;
-	}
-
-	public FilmActorPK getId() {
+	public FilmCategoryPK getId() {
 		return this.id;
 	}
 
-	public void setId(FilmActorPK id) {
+	public void setId(FilmCategoryPK id) {
 		this.id = id;
 	}
 
@@ -56,12 +54,12 @@ public class FilmActor implements Serializable {
 		this.lastUpdate = lastUpdate;
 	}
 
-	public Actor getActor() {
-		return this.actor;
+	public Category getCategory() {
+		return this.category;
 	}
 
-	public void setActor(Actor actor) {
-		this.actor = actor;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public Film getFilm() {
