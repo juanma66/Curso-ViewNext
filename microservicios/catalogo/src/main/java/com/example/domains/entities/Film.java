@@ -2,6 +2,10 @@ package com.example.domains.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.Valid;
+
+import com.example.domains.core.EntityBase;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
@@ -14,7 +18,7 @@ import java.util.List;
 @Entity
 @Table(name="film")
 @NamedQuery(name="Film.findAll", query="SELECT f FROM Film f")
-public class Film implements Serializable {
+public class Film extends EntityBase<Film> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -62,8 +66,8 @@ public class Film implements Serializable {
 
 	//bi-directional many-to-one association to FilmCategory
 	@OneToMany(mappedBy="film")
+	@Valid
 	private List<FilmCategory> filmCategories;
-
 
 	public Film() {
 	}
@@ -212,8 +216,6 @@ public class Film implements Serializable {
 
 		return filmCategory;
 	}
-
-
 
 	@Override
 	public String toString() {

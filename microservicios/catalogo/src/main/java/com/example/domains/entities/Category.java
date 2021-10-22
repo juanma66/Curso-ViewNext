@@ -17,35 +17,36 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
  * The persistent class for the category database table.
  * 
  */
 @Entity
-@Table(name = "category")
-@NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c")
+@Table(name="category")
+@NamedQuery(name="Category.findAll", query="SELECT c FROM Category c")
 public class Category extends EntityBase<Category> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "category_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="category_id")
 	@JsonProperty("id")
 	private int categoryId;
 
-	@Column(name = "last_update")
+	@Column(name="last_update")
 	@Generated(value = GenerationTime.ALWAYS)
 	@PastOrPresent
 	@JsonIgnore
 	private Timestamp lastUpdate;
 
 	@NotBlank
-	@Length(max = 25)
-	@JsonProperty("Categoria")
+	@Length(max=25)
+	@JsonProperty("categoria")
 	private String name;
 
-	// bi-directional many-to-one association to FilmCategory
-	@OneToMany(mappedBy = "category")
+	//bi-directional many-to-one association to FilmCategory
+	@OneToMany(mappedBy="category")
 	@JsonIgnore
 	private List<FilmCategory> filmCategories;
 
@@ -122,7 +123,7 @@ public class Category extends EntityBase<Category> implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Category [categoryId=" + categoryId + ", lastUpdate=" + lastUpdate + ", name=" + name + "]";
+		return "Category [categoryId=" + categoryId + ", name=" + name + ", lastUpdate=" + lastUpdate + "]";
 	}
 
 }
