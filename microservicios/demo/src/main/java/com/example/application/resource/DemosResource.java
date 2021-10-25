@@ -1,6 +1,5 @@
 package com.example.application.resource;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.domains.entities.Actor;
 import com.example.domains.entities.dtos.ActorDTO;
+
+import org.springframework.http.HttpStatus;
 
 @RestController
 public class DemosResource {
@@ -26,30 +27,29 @@ public class DemosResource {
 	    sb.append("language: " + language + "\n");
 	    return sb.toString();
 	}
-   
-	@GetMapping(path = "/params/{id}",produces = {"text/xml"})
+	@GetMapping(path = "/params/{id}", produces = { "text/xml" })
 	public String cotillaXML(
 	        @PathVariable String id,
 	        @RequestParam(required = false, defaultValue = "valor por defecto") String nom,
 	        @RequestHeader("Accept-Language") String language) { 
 	    StringBuilder sb = new StringBuilder();
-	    sb.append("<raiz><id>" + id + "</id>\n");
+	    sb.append("<raiz>\n<id>" + id + "</id>\n");
 	    sb.append("<nombre>" + nom + "</nombre>\n");
 	    sb.append("<idioma>" + language + "</idioma>\n</raiz>\n");
 	    return sb.toString();
 	}
 	
 	@GetMapping(path = "/salida")
-	@ResponseStatus(code=HttpStatus.OK)
+	@ResponseStatus(code = HttpStatus.OK)
 	public ActorDTO salidaGet() {
-		return ActorDTO.from(new Actor(0,"Pepitp","Gato"));
+		return ActorDTO.from(new Actor(0, "Pepito", "Grillo"));
 	}
-	
+
 	@PostMapping(path = "/salida")
-	@ResponseStatus(code=HttpStatus.ACCEPTED)
+	@ResponseStatus(code = HttpStatus.ACCEPTED)
 	public ActorDTO salidaPost(@RequestBody ActorDTO item) {
 		item.setFirstName(item.getFirstName().toUpperCase());
 		return item;
 	}
-	
+
 }

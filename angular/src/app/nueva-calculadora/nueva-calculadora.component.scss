@@ -1,93 +1,112 @@
-*, *:before, *:after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
+$fondo:#cacaca;
+$blanco:#ffffff;
+$negro:#000000;
+$gris:#808080;
+$rojo: #FF0000;
+$verde: #00FF00;
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
-body {
-  display: grid;
-  grid-template-rows: 1fr;
-  height: 100vh;
-  align-items: center;
+@mixin estiloBody {
+    body: {
+        display: grid;
+        grid-template-rows: 1fr;
+        height: 100vh;
+        align-items: center;
+    }
 }
 
 .container {
-  background: #cacaca;
-  margin: 0 auto;
-  max-width: 800px;
-  border: 1px solid grey;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto minmax(500px, 1fr);
-  justify-items: center;
-  align-items: start;
-  grid-gap: 50px;
-  padding: 50px;
+    background: $fondo;
+    margin: 0 auto;
+    max-width: 800px;
+    border: 1px solid $gris;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(500px, 1fr);
+    justify-items: center;
+    align-items: start;
+    grid-gap: 50px;
+    padding: 50px;
 }
 
 .titulo {
-  border-bottom: 5px solid grey;
-  text-align: center;
-  width: 100%;
-  padding-bottom: 10px;
+    border-bottom: 5px solid $gris;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 10px;
 }
 
 .wrapper {
-  display: grid;
-  width: 480px;
-  height: 100%;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  grid-gap: 10px;
-}
-
-.button {
-  width: 100%;
-  height: 100%;
-  background: black;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  font-size: 24px;
-  box-shadow: 5px 5px 3px grey;
+    display: grid;
+    width: 60%;
+    height: 60%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 10px;
 }
 
 .resultado {
-  border: 1px solid black;
-  font-size: 40px;
-  font-weight: black;
-  text-align: right;
-  padding: 20px;
-  width: 100%;
-  box-shadow: 5px 5px 3px grey;
-  transition: all 1s;
+    border: 1px solid $negro;
+    font-size: 40px;
+    font-weight: $negro;
+    text-align: right;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 5px 5px 3px $gris;
+    transition: all 1s;
 }
 
-button:active, button:hover {
-  box-shadow: 3px 3px 10px grey;
-  transform: translateX(1px);
-  transform: translateY(1px);
+.button {
+    width: 100%;
+    height: 100%;
+    background: $negro;
+    color: $blanco;
+    border: none;
+    border-radius: 3px;
+    font-size: 24px;
+    box-shadow: 5px 5px 3px $gris;
 }
 
-button:active {
-  box-shadow: 5px 5px 10px grey;
-  transform: translateX(0px);
-  transform: translateY(0px);
+.button:active,
+.button:hover {
+    box-shadow: 3px 3px 10px $gris;
+    transform: translateX(1px);
+    transform: translateY(1px);
+}
+
+.button:active {
+    box-shadow: 5px 5px 10px $gris;
+    transform: translateX(0px);
+    transform: translateY(0px);
 }
 
 .button-rojo {
-  background: red;
+    background: $rojo;
 }
 
 .button-verde {
-  background: green;
+    background: $verde;
 }
 
 .grid-4 {
-  grid-column: span 4;
+    grid-column: span 4;
 }
 
 .grid-2 {
-  grid-column: span 2;
+    grid-column: span 2;
+}
+
+@media only screen and (max-width: 375px) and (min-width: 5px) {
+    .button {
+        width: auto;
+        height: auto;
+        font-size: 10px;
+    }
 }
