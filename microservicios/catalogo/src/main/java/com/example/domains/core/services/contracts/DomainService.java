@@ -14,7 +14,7 @@ public interface DomainService<E, K> {
 	
 	E add(E item) throws DuplicateKeyException, InvalidDataException;
 	
-	E modify(E item) throws NotFoundException, InvalidDataException;
+	E modify(E item) throws NotFoundException, InvalidDataException, DuplicateKeyException;
 	
 	void delete(E item) throws InvalidDataException;
 	void deleteById(K id);

@@ -3,12 +3,19 @@ package com.example.domains.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PastOrPresent;
+
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+import org.hibernate.validator.constraints.Length;
 
 import com.example.domains.core.EntityBase;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -23,40 +30,57 @@ public class Film extends EntityBase<Film> implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@NotBlank
 	@Column(name="film_id")
+	@Length(max = 5)
 	private int filmId;
 
-	@Lob
+	@Column(name="description")
 	private String description;
 
 	@Column(name="last_update")
+	@Generated(value = GenerationTime.ALWAYS)
+	@PastOrPresent
 	private Timestamp lastUpdate;
 
+	@Column(name="length")
+	@Length(max = 5)
 	private int length;
 
+	@Column(name="rating")
 	private String rating;
 
 	@Column(name="release_year")
 	private Short releaseYear;
 
 	@Column(name="rental_duration")
+	@NotBlank
+	@Length(max = 3)
 	private byte rentalDuration;
 
 	@Column(name="rental_rate")
+	@NotBlank
 	private BigDecimal rentalRate;
 
 	@Column(name="replacement_cost")
+	@NotBlank
 	private BigDecimal replacementCost;
 
+	@Column(name="title")
+	@NotBlank
+	@Length(min=2, max = 128)
 	private String title;
 
 	//bi-directional many-to-one association to Language
 	@ManyToOne
 	@JoinColumn(name="language_id")
+	@Length(max = 3)
 	private Language language;
 
 	//bi-directional many-to-one association to Language
 	@ManyToOne
+	@Length(max = 3)
+	@NotBlank
 	@JoinColumn(name="original_language_id")
 	private Language languageVO;
 
@@ -215,6 +239,25 @@ public class Film extends EntityBase<Film> implements Serializable {
 		filmCategory.setFilm(null);
 
 		return filmCategory;
+	}
+
+	
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(filmId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Film other = (Film) obj;
+		return filmId == other.filmId;
 	}
 
 	@Override

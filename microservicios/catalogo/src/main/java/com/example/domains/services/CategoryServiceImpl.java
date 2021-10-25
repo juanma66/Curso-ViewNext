@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 
 import com.example.domains.contracts.services.CategoryService;
 import com.example.domains.entities.Category;
@@ -20,7 +21,7 @@ public class CategoryServiceImpl implements CategoryService {
 	
 	@Override
 	public List<Category> getAll() {
-		return dao.findAll();
+		return dao.findAll(Sort.by("name"));
 	}
 
 	@Override
@@ -33,7 +34,7 @@ public class CategoryServiceImpl implements CategoryService {
 		if(item == null)
 			throw new InvalidDataException("Faltan los datos");
 		if(item.isInvalid())
-			throw new InvalidDataException(item.getErrosString());
+			throw new InvalidDataException(item.getErrorsString());
 		if(getOne(item.getCategoryId()).isPresent())
 			throw new DuplicateKeyException();
 		return dao.save(item);
@@ -44,7 +45,7 @@ public class CategoryServiceImpl implements CategoryService {
 		if(item == null)
 			throw new InvalidDataException("Faltan los datos");
 		if(item.isInvalid())
-			throw new InvalidDataException(item.getErrosString());
+			throw new InvalidDataException(item.getErrorsString());
 		if(getOne(item.getCategoryId()).isEmpty())
 			throw new NotFoundException();
 		return dao.save(item);

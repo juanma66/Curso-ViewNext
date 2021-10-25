@@ -19,55 +19,34 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.example.domains.entities.Contacto;
+import com.example.domains.entities.Language;
 import com.example.exceptions.BadRequestException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
-import com.example.infraestructure.repositories.ContactoRepository;
+import com.example.infraestructure.repositories.LanguageRepository;
 
-import lombok.Value;
 
 @RestController
-@RequestMapping(path = "/api/contactos")
-public class ContactoResource {
-	@Value
-	public static class PageCount {
-		private int pages;
-		private int rows;
-	}
-
+@RequestMapping(path="/api/language")
+public class LanguageResource {
+	
 	@Autowired
-	private ContactoRepository dao;
+	private LanguageRepository dao;
 
 	@GetMapping
-	public List<Contacto> getAll(@RequestParam(required = false) String _sort) {
-		if (_sort != null)
-			return dao.findAll(Sort.by(Direction.ASC, _sort));
+	public List<Language> getAll() {
+	
 		return dao.findAll();
 	}
 
-	@GetMapping(params = "_page")
-	public List<Contacto> getPaged(@RequestParam int _page,
-			@RequestParam(required = false, defaultValue = "20") int _rows, @RequestParam(required = false) String _sort) {
-		if (_sort != null)
-			return dao.findAll(PageRequest.of(_page, _rows, Sort.by(Direction.ASC, _sort))).getContent();
-		return dao.findAll(PageRequest.of(_page, _rows)).getContent();
-	}
-
-	@GetMapping(params = "_page=count")
-	public PageCount getPageCount(@RequestParam(required = false, defaultValue = "20") int _rows) {
-		var rows = (int) dao.count();
-		return new PageCount((int) Math.ceil((double) rows / _rows), rows);
-	}
 
 	@GetMapping(path = "/{id}")
-	public Contacto getOne(@PathVariable int id) throws Exception {
-		Optional<Contacto> rslt = dao.findById(id);
+	public Language getOne(@PathVariable int id) throws Exception {
+		Optional<Language> rslt = dao.findById(id);
 		if (!rslt.isPresent())
 			throw new NotFoundException();
 		return rslt.get();
@@ -75,25 +54,25 @@ public class ContactoResource {
 
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public ResponseEntity<Object> add(@Valid @RequestBody Contacto item) throws Exception {
-		if (dao.findById(item.getId()).isPresent())
+	public ResponseEntity<Object> add(@Valid @RequestBody Language item) throws Exception {
+		if (dao.findById(item.getLanguageId()).isPresent())
 			throw new InvalidDataException("Duplicate key");
 		int id = 1;
-		Optional<Contacto> encontrado = dao.findAll(PageRequest.of(0, 1, Sort.by(Direction.DESC, "id"))).stream()
+		Optional<Language> encontrado = dao.findAll(PageRequest.of(0, 1, Sort.by(Direction.DESC, "id"))).stream()
 				.findFirst();
 		if (encontrado.isPresent())
-			id = encontrado.get().getId() + 1;
-		item.setId(id);
+			id = encontrado.get().getLanguageId() + 1;
+		item.setLanguageId(id);
 		dao.save(item); // ConstraintViolationException
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
 		return ResponseEntity.created(location).build();
 	}
 
 	@PutMapping(path = "/{id}")
-	public Contacto modify(@PathVariable int id, @Valid @RequestBody Contacto item) throws Exception {
-		if (item.getId() != id)
+	public Language modify(@PathVariable int id, @Valid @RequestBody Language item) throws Exception {
+		if (item.getLanguageId() != id)
 			throw new BadRequestException("No coinciden los ID");
-		if (!dao.findById(item.getId()).isPresent())
+		if (!dao.findById(item.getLanguageId()).isPresent())
 			throw new NotFoundException("Missing item");
 		return dao.save(item); // ConstraintViolationException
 	}

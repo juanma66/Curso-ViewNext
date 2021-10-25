@@ -2,7 +2,6 @@ package com.example.domains.core;
 
 import java.util.Set;
 
-
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -22,7 +21,7 @@ public abstract class EntityBase<E> {
 	
 	@JsonIgnore
 	@Transient
-	public String getErrosString() {
+	public String getErrorsString() {
 		Set<ConstraintViolation<E>> lst = getErrors();
 		if(lst.isEmpty()) return "";
 		StringBuilder sb = new StringBuilder("ERRORES:");
