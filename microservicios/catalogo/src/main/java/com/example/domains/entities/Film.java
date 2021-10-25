@@ -93,12 +93,19 @@ public class Film extends EntityBase<Film> implements Serializable {
 	@Valid
 	private List<FilmCategory> filmCategories;
 
-	public Film() {
-	}
-
-	public Film(int filmId) {
+	
+	public Film(@NotBlank @Length(max = 5) int filmId, String description,
+			@NotBlank @Length(min = 2, max = 128) String title, @Length(max = 3) Language language,
+			@Length(max = 3) @NotBlank Language languageVO) {
 		super();
 		this.filmId = filmId;
+		this.description = description;
+		this.title = title;
+		this.language = language;
+		this.languageVO = languageVO;
+	}
+
+	public Film(int filmId2, String description2, String title2) {
 	}
 
 	public int getFilmId() {

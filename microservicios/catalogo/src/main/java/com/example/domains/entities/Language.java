@@ -34,6 +34,7 @@ public class Language extends EntityBase<Language> implements Serializable {
 	private int languageId;
 
 	@Column(name="last_update")
+	@JsonIgnore
 	@Generated(value = GenerationTime.ALWAYS)
 	@PastOrPresent
 	private Timestamp lastUpdate;
