@@ -2,20 +2,17 @@ package com.example.domains.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PastOrPresent;
 
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
-import org.hibernate.validator.constraints.Length;
 
 import com.example.domains.core.EntityBase;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 /**
@@ -30,12 +27,10 @@ public class Film extends EntityBase<Film> implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@NotBlank
 	@Column(name="film_id")
-	@Length(max = 5)
 	private int filmId;
 
-	@Column(name="description")
+	@Lob
 	private String description;
 
 	@Column(name="last_update")
@@ -43,70 +38,107 @@ public class Film extends EntityBase<Film> implements Serializable {
 	@PastOrPresent
 	private Timestamp lastUpdate;
 
-	@Column(name="length")
-	@Length(max = 5)
 	private int length;
 
-	@Column(name="rating")
 	private String rating;
 
 	@Column(name="release_year")
 	private Short releaseYear;
 
 	@Column(name="rental_duration")
-	@NotBlank
-	@Length(max = 3)
 	private byte rentalDuration;
 
 	@Column(name="rental_rate")
-	@NotBlank
 	private BigDecimal rentalRate;
 
 	@Column(name="replacement_cost")
-	@NotBlank
 	private BigDecimal replacementCost;
 
-	@Column(name="title")
-	@NotBlank
-	@Length(min=2, max = 128)
 	private String title;
 
 	//bi-directional many-to-one association to Language
 	@ManyToOne
 	@JoinColumn(name="language_id")
-	@Length(max = 3)
 	private Language language;
 
 	//bi-directional many-to-one association to Language
 	@ManyToOne
-	@Length(max = 3)
-	@NotBlank
 	@JoinColumn(name="original_language_id")
 	private Language languageVO;
 
 	//bi-directional many-to-one association to FilmActor
 	@OneToMany(mappedBy="film")
-	private List<FilmActor> filmActors;
+	private List<FilmActor> filmActors = new ArrayList<FilmActor>();
 
 	//bi-directional many-to-one association to FilmCategory
 	@OneToMany(mappedBy="film")
-	@Valid
-	private List<FilmCategory> filmCategories;
+	private List<FilmCategory> filmCategories = new ArrayList<FilmCategory>();
 
-	
-	public Film(@NotBlank @Length(max = 5) int filmId, String description,
-			@NotBlank @Length(min = 2, max = 128) String title, @Length(max = 3) Language language,
-			@Length(max = 3) @NotBlank Language languageVO) {
+	public Film() {
+	}
+
+
+	public Film(int filmId) {
 		super();
 		this.filmId = filmId;
-		this.description = description;
-		this.title = title;
-		this.language = language;
-		this.languageVO = languageVO;
 	}
 
-	public Film(int filmId2, String description2, String title2) {
+
+
+	public Film(int filmId, String title, String description) {
+		super();
+		this.filmId = filmId;
+		this.title = title;
+		this.description = description;
 	}
+
+
+
+	public Film(int filmId, String title, Language language) {
+		super();
+		this.filmId = filmId;
+		this.title = title;
+		this.language = language;
+	}
+	
+
+
+
+	public Film(int filmId,String title, String description,Language language, @PastOrPresent Timestamp lastUpdate, byte rentalDuration,
+			BigDecimal rentalRate, BigDecimal replacementCost  ) {
+		super();
+		this.filmId = filmId;
+		this.title = title;
+		this.description = description;
+		this.language = language;
+		this.lastUpdate = lastUpdate;
+		this.rentalDuration = rentalDuration;
+		this.rentalRate = rentalRate;
+		this.replacementCost = replacementCost;
+		
+		
+	}
+
+
+	public Film(int filmId, String title, String description, int length, String rating, Short releaseYear,
+			byte rentalDuration, BigDecimal rentalRate, BigDecimal replacementCost, Language language,
+			Language languageVO, List<FilmActor> filmActors, List<FilmCategory> filmCategories) {
+		super();
+		this.filmId = filmId;
+		this.title = title;
+		this.description = description;
+		this.length = length;
+		this.rating = rating;
+		this.releaseYear = releaseYear;
+		this.rentalDuration = rentalDuration;
+		this.rentalRate = rentalRate;
+		this.replacementCost = replacementCost;
+		this.language = language;
+		this.languageVO = languageVO;
+		this.filmActors = filmActors;
+		this.filmCategories = filmCategories;
+	}
+
 
 	public int getFilmId() {
 		return this.filmId;
@@ -248,28 +280,12 @@ public class Film extends EntityBase<Film> implements Serializable {
 		return filmCategory;
 	}
 
-	
-	
-	@Override
-	public int hashCode() {
-		return Objects.hash(filmId);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Film other = (Film) obj;
-		return filmId == other.filmId;
-	}
 
 	@Override
 	public String toString() {
 		return "Film [filmId=" + filmId + ", title=" + title + "]";
 	}
+	
+	
 
 }

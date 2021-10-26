@@ -1,7 +1,6 @@
 package com.example.domains.entities;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -27,6 +26,8 @@ import java.util.Objects;
 @Table(name="actor")
 @NamedQuery(name="Actor.findAll", query="SELECT a FROM Actor a")
 public class Actor extends EntityBase<Actor> implements Serializable {
+	
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -52,8 +53,8 @@ public class Actor extends EntityBase<Actor> implements Serializable {
 	//bi-directional many-to-one association to FilmActor
 	@OneToMany(mappedBy="actor")
 	@Valid
-	private List<FilmActor> filmActors = new ArrayList<FilmActor>();
-
+	private List<FilmActor> filmActors= new ArrayList<FilmActor>();
+	
 	public Actor() {
 	}
 
@@ -115,10 +116,11 @@ public class Actor extends EntityBase<Actor> implements Serializable {
 
 		return filmActor;
 	}
+	
 	public FilmActor addFilmActor(Film film) {
 		if(film == null)
 			throw new IllegalArgumentException("La pelicula es obligatoria");
-		var filmActor = new FilmActor(film, this);
+		var filmActor = new FilmActor(this, film);
 		getFilmActors().add(filmActor);
 		return filmActor;
 	}
@@ -152,18 +154,17 @@ public class Actor extends EntityBase<Actor> implements Serializable {
 		return "Actor [actorId=" + actorId + ", firstName=" + firstName + ", lastName=" + lastName + ", lastUpdate="
 				+ lastUpdate + "]";
 	}
-
+	
 	public void jubilate() {
 		
 	}
-
 	public void despedido() {
 		
 	}
-
+	
 	public void darPremio(String premio) {
 		
 	}
-
 	
+
 }

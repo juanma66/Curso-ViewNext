@@ -2,19 +2,18 @@ package com.example.domains.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PastOrPresent;
 
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
-import org.hibernate.validator.constraints.Length;
 
 import com.example.domains.core.EntityBase;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Objects;
 
 
 /**
@@ -29,19 +28,15 @@ public class Language extends EntityBase<Language> implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@NotBlank
 	@Column(name="language_id")
 	private int languageId;
-
 	@Column(name="last_update")
-	@JsonIgnore
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	@JsonProperty("ultima_actualizacion")
 	@Generated(value = GenerationTime.ALWAYS)
 	@PastOrPresent
 	private Timestamp lastUpdate;
-	
-	@Column(name="name")
-    @NotBlank
-	@Length(min=2, max = 20)
+	@JsonProperty("idioma")
 	private String name;
 
 	//bi-directional many-to-one association to Film
@@ -56,14 +51,14 @@ public class Language extends EntityBase<Language> implements Serializable {
 
 	public Language() {
 	}
-	
-	
 
-	public Language(int languageId) {
+	
+	public Language(int languageId, String name, Timestamp lastUpdate) {
 		super();
 		this.languageId = languageId;
+		this.name = name;
+		this.lastUpdate = lastUpdate;
 	}
-
 
 
 	public int getLanguageId() {
@@ -133,34 +128,5 @@ public class Language extends EntityBase<Language> implements Serializable {
 
 		return filmsVO;
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(languageId);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Language other = (Language) obj;
-		return languageId == other.languageId;
-	}
-
-	@Override
-	public String toString() {
-		return "Language [languageId=" + languageId + ", lastUpdate=" + lastUpdate + ", name=" + name + ", films="
-				+ films + ", filmsVO=" + filmsVO + ", getLanguageId()=" + getLanguageId() + ", getLastUpdate()="
-				+ getLastUpdate() + ", getName()=" + getName() + ", getFilms()=" + getFilms() + ", getFilmsVO()="
-				+ getFilmsVO() + ", hashCode()=" + hashCode() + ", getErrors()=" + getErrors() + ", getErrorsString()="
-				+ getErrorsString() + ", isValid()=" + isValid() + ", isInvalid()=" + isInvalid() + ", getClass()="
-				+ getClass() + ", toString()=" + super.toString() + "]";
-	}
-	
-	
 
 }

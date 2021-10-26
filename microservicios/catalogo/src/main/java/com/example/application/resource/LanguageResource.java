@@ -2,15 +2,11 @@ package com.example.application.resource;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,68 +19,75 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.example.domains.contracts.services.LanguageService;
 import com.example.domains.entities.Language;
+import com.example.domains.entities.dtos.FilmShort;
 import com.example.exceptions.BadRequestException;
+import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
-import com.example.infraestructure.repositories.LanguageRepository;
 
+import org.springframework.http.HttpStatus;
 
 @RestController
-@RequestMapping(path="/api/language")
+@RequestMapping(path = "/idiomas")
 public class LanguageResource {
-	
 	@Autowired
-	private LanguageRepository dao;
+	LanguageService srv;
 
 	@GetMapping
 	public List<Language> getAll() {
-	
-		return dao.findAll();
+		
+			return srv.getAll();
 	}
 
+	
 
 	@GetMapping(path = "/{id}")
-	public Language getOne(@PathVariable int id) throws Exception {
-		Optional<Language> rslt = dao.findById(id);
-		if (!rslt.isPresent())
+	public Language getOne(@PathVariable int id) throws NotFoundException {
+		var language = srv.getOne(id);
+		if(language.isEmpty())
 			throw new NotFoundException();
-		return rslt.get();
+		else
+			return language.get();
+	}
+
+	@GetMapping(path = "/{id}/peliculas")
+	@Transactional
+	public List<FilmShort> getPelis(@PathVariable int id) throws NotFoundException {
+		var language= srv.getOne(id);
+		if(language.isEmpty())
+			throw new NotFoundException();
+		else {
+			return  srv.getLanguageFilms(id).stream().map(item -> FilmShort.from(item)).collect(Collectors.toList());
+		}
 	}
 
 	@PostMapping
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public ResponseEntity<Object> add(@Valid @RequestBody Language item) throws Exception {
-		if (dao.findById(item.getLanguageId()).isPresent())
-			throw new InvalidDataException("Duplicate key");
-		int id = 1;
-		Optional<Language> encontrado = dao.findAll(PageRequest.of(0, 1, Sort.by(Direction.DESC, "id"))).stream()
-				.findFirst();
-		if (encontrado.isPresent())
-			id = encontrado.get().getLanguageId() + 1;
-		item.setLanguageId(id);
-		dao.save(item); // ConstraintViolationException
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
+	public ResponseEntity<Object> create(@Valid @RequestBody Language item) throws BadRequestException, DuplicateKeyException, InvalidDataException {
+		if(item == null)
+			throw new BadRequestException("Faltan los datos");
+		var newItem = srv.add(item);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+			.buildAndExpand(newItem.getLanguageId()).toUri();
 		return ResponseEntity.created(location).build();
+
 	}
 
-	@PutMapping(path = "/{id}")
-	public Language modify(@PathVariable int id, @Valid @RequestBody Language item) throws Exception {
-		if (item.getLanguageId() != id)
-			throw new BadRequestException("No coinciden los ID");
-		if (!dao.findById(item.getLanguageId()).isPresent())
-			throw new NotFoundException("Missing item");
-		return dao.save(item); // ConstraintViolationException
+	@PutMapping("/{id}")
+	//@ResponseStatus(HttpStatus.NO_CONTENT)
+	public Language update(@PathVariable int id, @Valid @RequestBody Language item) throws BadRequestException, NotFoundException, InvalidDataException {
+		if(item == null)
+			throw new BadRequestException("Faltan los datos");
+		if(id != item.getLanguageId())
+			throw new BadRequestException("No coinciden los identificadores");
+		return srv.modify(item);	
 	}
 
-	@DeleteMapping(path = "/{id}")
-	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable int id) throws Exception {
-		try {
-			dao.deleteById(id);
-		} catch (Exception e) {
-			throw new NotFoundException("Missing item", e);
-		}
+	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void delete(@PathVariable int id) {
+		srv.deleteById(id);
 	}
 
 }

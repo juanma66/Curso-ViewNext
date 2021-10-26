@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -39,24 +40,35 @@ public class Category extends EntityBase<Category> implements Serializable {
 	@PastOrPresent
 	@JsonIgnore
 	private Timestamp lastUpdate;
-
+	
 	@NotBlank
-	@Length(max=25)
+	@Length(max = 25)
 	@JsonProperty("categoria")
 	private String name;
 
 	//bi-directional many-to-one association to FilmCategory
 	@OneToMany(mappedBy="category")
 	@JsonIgnore
-	private List<FilmCategory> filmCategories;
+	private List<FilmCategory> filmCategories = new ArrayList<FilmCategory>();
 
 	public Category() {
 	}
 
+	
 	public Category(int categoryId) {
 		super();
 		this.categoryId = categoryId;
 	}
+
+
+	public Category(int categoryId, @NotBlank @Length(min = 2, max = 20) String name
+			) {
+		super();
+		this.categoryId = categoryId;
+		this.name = name;
+		
+	}
+
 
 	public int getCategoryId() {
 		return this.categoryId;
@@ -104,10 +116,12 @@ public class Category extends EntityBase<Category> implements Serializable {
 		return filmCategory;
 	}
 
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(categoryId);
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -121,9 +135,11 @@ public class Category extends EntityBase<Category> implements Serializable {
 		return categoryId == other.categoryId;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Category [categoryId=" + categoryId + ", name=" + name + ", lastUpdate=" + lastUpdate + "]";
+		return "Category [categoryId=" + categoryId + ", name=" + name + ", lastUpdate=" + lastUpdate + 
+				", filmCategories=" + filmCategories + "]";
 	}
 
 }
