@@ -75,3 +75,37 @@ Content-Type: application/json
 ###
 
 delete  http://localhost:8001/actores/206
+
+###
+
+get  http://localhost:8010/actores
+Content-Type: application/json
+###
+
+get  http://localhost:8010/actores/1/peliculas
+Content-Type: application/json
+###
+
+get  http://localhost:8010/actores?page=0&size=10&sort=firstName
+Content-Type: application/json
+
+###
+
+GET http://localhost:8010/actores/8
+Content-Type: application/json
+
+###
+post http://localhost:8010/actores
+Content-Type: application/json
+
+{
+  "id": 330,
+  "nombre": "Pollo",
+  "apellidos": "Corrar"
+}
+
+
+###
+
+get  http://localhost:8010/actores/330
+Content-Type: application/json
