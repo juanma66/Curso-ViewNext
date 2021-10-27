@@ -33,10 +33,13 @@ import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
 
+import io.swagger.annotations.Api;
+
 import org.springframework.http.HttpStatus;
 
 @RestController
 @RequestMapping(path = "/actores")
+@Api(value = "Mantenimiento de actores", description = "Permite mantener la lista de actores en las peliculas")
 public class ActorResource {
 	@Autowired
 	ActorService srv;
@@ -48,6 +51,7 @@ public class ActorResource {
 		else
 			return (List<ActorDTO>) srv.getByProjection(Sort.by(sort), ActorDTO.class);
 	}
+	
 	
 	@GetMapping(params = "page")
 	public Page<ActorDTO> getAllPageable(Pageable item) {

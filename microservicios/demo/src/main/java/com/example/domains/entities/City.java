@@ -2,6 +2,9 @@ package com.example.domains.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -22,7 +25,8 @@ public class City implements Serializable {
 	private int cityId;
 
 	private String city;
-
+	
+    @JsonIgnore
 	@Column(name="last_update")
 	private Timestamp lastUpdate;
 

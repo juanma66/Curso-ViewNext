@@ -23,6 +23,9 @@ import com.example.domains.entities.dtos.ActorShort;
 import com.example.infraestructure.repositories.ActorRepository;
 import com.example.ioc.Servicio;
 
+import springfox.documentation.oas.annotations.EnableOpenApi;
+
+@EnableOpenApi
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
 
