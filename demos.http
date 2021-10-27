@@ -109,3 +109,36 @@ Content-Type: application/json
 
 get  http://localhost:8010/actores/330
 Content-Type: application/json
+
+###
+GET http://localhost:8010/actores
+###
+GET http://localhost:8010/actores/1
+###
+GET http://localhost:8010/actores/1/peliculas
+###
+GET http://localhost:8010/categorias
+###
+GET http://localhost:8010/categorias/1/peliculas
+###
+
+POST  http://localhost:8010/localhost:8010/peliculas/
+Content-Type: application/json
+
+{
+  "id": 0,
+  "titulo": "Pollo",
+  "idioma": "Corrar",
+  "descripcion":"esto es una descripcion",
+  "ultima_actualizacion":"12/32/42",
+  "duracion":"",
+  "rate":2,
+  "coste":32.3
+}
+
+
+###
+
+
+Delete  http://localhost:8010/peliculas/0
+Content-Type: application/json
