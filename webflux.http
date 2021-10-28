@@ -1,0 +1,16 @@
+GET http://localhost:8066/api/contactos
+
+###
+
+GET http://localhost:8066/api/contactos/1
+
+###
+
+GET http://localhost:8065/serie
+
+###
+
+GET http://localhost:8065/paralelo
+Accept: application/x-ndjson
+
+###
