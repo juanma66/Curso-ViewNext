@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -25,18 +26,19 @@ public class City implements Serializable {
 	private int cityId;
 
 	private String city;
-	
-    @JsonIgnore
+
 	@Column(name="last_update")
 	private Timestamp lastUpdate;
 
 	//bi-directional many-to-one association to Address
 	@OneToMany(mappedBy="city")
+	@JsonIgnore
 	private List<Address> addresses;
 
 	//bi-directional many-to-one association to Country
 	@ManyToOne
 	@JoinColumn(name="country_id")
+	@JsonManagedReference
 	private Country country;
 
 	public City() {

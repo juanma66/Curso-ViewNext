@@ -1,17 +1,22 @@
 package com.example.application.resource;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
-
+import javax.validation.Validator;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.domains.contracts.services.ActorService;
+import com.example.domains.entities.FilmActor;
 import com.example.domains.entities.dtos.ActorDTO;
 import com.example.domains.entities.dtos.FilmShort;
 import com.example.exceptions.BadRequestException;
@@ -39,7 +45,7 @@ import org.springframework.http.HttpStatus;
 
 @RestController
 @RequestMapping(path = "/actores")
-@Api(value = "Mantenimiento de actores", description = "Permite mantener la lista de actores en las peliculas")
+@Api(value = "Manteniento de actores", description = "Permite mantener la lista de actores utilizados en el reaparto de las peliculas")
 public class ActorResource {
 	@Autowired
 	ActorService srv;
@@ -51,7 +57,6 @@ public class ActorResource {
 		else
 			return (List<ActorDTO>) srv.getByProjection(Sort.by(sort), ActorDTO.class);
 	}
-	
 	
 	@GetMapping(params = "page")
 	public Page<ActorDTO> getAllPageable(Pageable item) {
@@ -74,7 +79,9 @@ public class ActorResource {
 		if(actor.isEmpty())
 			throw new NotFoundException();
 		else {
-			return (List<FilmShort>) actor.get().getFilmActors().stream().map(item -> FilmShort.from(item)).collect(Collectors.toList());
+			return (List<FilmShort>) actor.get().getFilmActors().stream()
+					.map(item -> FilmShort.from(item))
+					.collect(Collectors.toList());
 		}
 	}
 	
