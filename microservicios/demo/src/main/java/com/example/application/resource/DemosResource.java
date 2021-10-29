@@ -30,6 +30,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 //import org.springframework.data.redis.core.StringRedisTemplate;
 //import org.springframework.data.redis.core.ValueOperations;
@@ -151,5 +152,17 @@ public class DemosResource {
 //		return restLB.getForObject("lb://catalogo-service/", String.class);
 		return proxy.getRaiz();
 	}
+
+	//para leer achivos externos
+	//acuerdate que si no iniciae en ms.config da error,
+	//y deebs comenta la parte de abajo
+	@Value("${jwt.secret}")
+	String secreto;
+	
+	@GetMapping("/config")
+	public String traeConfig() {
+		return secreto;
+	}
+	
 	
 }

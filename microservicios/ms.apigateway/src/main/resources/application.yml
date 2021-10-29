@@ -41,7 +41,7 @@ spring:
         predicates:
           - Path=/contactos/**
         filters:
-          - RewritePath=/contactos/*, /api/contactos
+          - RewritePath=/contactos/, /api/contactos
       - id: serv-search
         uri: https://www.google.com/
         predicates:
