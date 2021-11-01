@@ -15,7 +15,7 @@ import com.example.domains.entities.Actor;
 import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
-import com.example.infrastructure.repositories.ActorRepository;
+import com.example.infraestructure.repositories.ActorRepository;
 
 @Service
 public class ActorServiceImpl implements ActorService {

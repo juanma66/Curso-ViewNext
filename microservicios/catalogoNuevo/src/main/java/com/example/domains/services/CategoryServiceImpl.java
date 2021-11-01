@@ -13,7 +13,7 @@ import com.example.domains.entities.Category;
 import com.example.exceptions.DuplicateKeyException;
 import com.example.exceptions.InvalidDataException;
 import com.example.exceptions.NotFoundException;
-import com.example.infrastructure.repositories.CategoryRepository;
+import com.example.infraestructure.repositories.CategoryRepository;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {

@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators, FormArray, ValidatorFn, AbstractCon
 import { User, RegisterUserDAO, LoginService } from '../security.service';
 import { Router } from '@angular/router';
 import { NotificationService, NotificationType } from 'src/app/common-services';
-import { LoggerService } from 'src/lib/mu-core';
+import { LoggerService } from 'src/lib/my-core';
 
 @Component({
   selector: 'app-register-user',

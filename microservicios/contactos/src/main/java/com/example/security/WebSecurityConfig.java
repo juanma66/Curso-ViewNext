@@ -16,9 +16,9 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-@EnableWebSecurity
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+@EnableWebSecurity
+//@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
@@ -34,8 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return source;
 	}
 
-	//esto de abajo da error hay que cambiar algo, es jwt
-	/*@Value("${jwt.secret}")
+	@Value("${jwt.secret}")
 	private String SECRET;
 
 	@Override
@@ -44,10 +43,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable()			
 			.addFilterAfter(new JWTAuthorizationFilter(SECRET), UsernamePasswordAuthenticationFilter.class)
 			.authorizeRequests()
-			.antMatchers("/login").permitAll()
-//			.antMatchers(HttpMethod.POST, "/login").permitAll()
-//			.antMatchers(HttpMethod.GET, "/login").permitAll()
-			.antMatchers(HttpMethod.GET, "/admin").hasRole("ADMIN")
-			.anyRequest().authenticated();
-	}*/
+//			.anyRequest().permitAll()
+			.antMatchers(HttpMethod.GET, "/api/contactos/**").permitAll()
+////			.antMatchers(HttpMethod.POST, "/api/contactos").authenticated()
+////			.antMatchers(HttpMethod.PUT, "/api/contactos").authenticated()
+////			.antMatchers(HttpMethod.DELETE, "/api/contactos").authenticated()
+			.anyRequest().authenticated()
+			;
+	}
 }

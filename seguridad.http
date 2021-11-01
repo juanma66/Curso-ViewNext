@@ -5,3 +5,6 @@ get  http://localhost/8091/admin
 
 ###
 get  http://localhost/8091/login?mame
+
+###
+get  http://localhost/8012

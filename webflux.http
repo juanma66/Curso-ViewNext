@@ -14,3 +14,5 @@ GET http://localhost:8065/paralelo
 Accept: application/x-ndjson
 
 ###
+
+get  http://localhost/8012

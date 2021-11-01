@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { CalculadoraComponent } from '../calculadora/calculadora.component';
 import { ClienteFormularioComponent } from '../cliente-formulario/cliente-formulario.component';
-import { ContactosComponent, CONTACTOS_COMPONENTES } from '../contacto/componente.component';
+import { ContactosComponent } from '../contactos';
 import { DemosComponent } from '../demos/demos.component';
 import { FormularioComponent } from '../formulario/formulario.component';
-import { HomeComponent } from '../main/home/home.component';
-import { NuevaCalculadoraComponent } from '../nueva-calculadora/nueva-calculadora.component';
+import { LibrosComponent } from '../libros';
+import { HomeComponent } from '../main';
 
 @Component({
   selector: 'app-dinamico',
@@ -13,13 +14,13 @@ import { NuevaCalculadoraComponent } from '../nueva-calculadora/nueva-calculador
 })
 export class DinamicoComponent implements OnInit {
   menu = [
-    { texto: 'Contactos', icono: '', componente: ContactosComponent},
-    { texto: 'Cliente Formulario', icono: '', componente: ClienteFormularioComponent},
-    { texto: 'formulario', icono: '', componente: FormularioComponent},
-    { texto: 'nueva-calculadora', icono: '', componente: NuevaCalculadoraComponent},
-    { texto: 'demos', icono: '', componente: DemosComponent },
-    { texto: 'inicio', icono: '', componente: HomeComponent },
-
+    { texto: 'inicio', icono: 'fas fa-home', componente: HomeComponent },
+    { texto: 'libros', componente: LibrosComponent, icono: 'fas fa-address-book'},
+    { texto: 'contactos', componente: ContactosComponent, icono: 'fas fa-address-book'},
+    { texto: 'demos', icono: 'fas fa-chalkboard-teacher', componente: DemosComponent },
+    { texto: 'calculadora', icono: 'fas fa-calculator', componente: CalculadoraComponent },
+    { texto: 'cliente', icono: 'fas fa-user-tie', componente: ClienteFormularioComponent },
+    { texto: 'formulario', icono: 'fas fa-user-tie', componente: FormularioComponent },
   ];
 
   actual = this.menu[0].componente;

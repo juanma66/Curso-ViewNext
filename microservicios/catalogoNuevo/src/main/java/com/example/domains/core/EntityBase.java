@@ -1,16 +1,14 @@
 package com.example.domains.core;
 
-import org.springframework.data.annotation.Transient;
-
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
+import org.springframework.data.annotation.Transient;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
 
 public abstract class EntityBase<E> {
 	private Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
@@ -19,7 +17,6 @@ public abstract class EntityBase<E> {
 	@JsonIgnore
 	public Set<ConstraintViolation<E>> getErrors() {
 		return validator.validate((E) this);
-
 	}
 	
 	@JsonIgnore
@@ -31,11 +28,15 @@ public abstract class EntityBase<E> {
 		lst.forEach(item -> sb.append(" " + item.getPropertyPath() + ": " + item.getMessage() + "."));
 		return sb.toString();
 	}
-
+	
+	@Transient
+	@JsonIgnore
 	public boolean isValid() {
 		return getErrors().size() == 0;
 	}
 	
+	@Transient
+	@JsonIgnore
 	public boolean isInvalid() {
 		return !isValid();
 	}

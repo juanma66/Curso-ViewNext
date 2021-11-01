@@ -57,7 +57,7 @@ public class Contacto {
 		this.avatar = avatar;
 		this.conflictivo = conflictivo;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -118,7 +118,7 @@ public class Contacto {
 	public void setConflictivo(boolean conflictivo) {
 		this.conflictivo = conflictivo;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -140,5 +140,5 @@ public class Contacto {
 				+ ", telefono=" + telefono + ", email=" + email + ", sexo=" + sexo + ", nacimiento=" + nacimiento
 				+ ", avatar=" + avatar + ", conflictivo=" + conflictivo + "]";
 	}	
-
+		
 }
