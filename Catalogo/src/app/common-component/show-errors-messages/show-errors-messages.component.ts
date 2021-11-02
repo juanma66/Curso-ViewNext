@@ -42,9 +42,9 @@ export class ShowErrorsMessagesComponent implements OnChanges  {
           break;
         default:
           if (typeof this.errors[err] === 'string')
-            msg += `${this.errors[err]}${this.errors[err].endsWith('.')?'':'.'} `;
+            msg += `${this.errors[err]}. `;
           else if (typeof this.errors[err]?.message === 'string')
-            msg += `${this.errors[err].message}${this.errors[err].message.endsWith('.')?'':'.'} `;
+            msg += `${this.errors[err].message}. `;
           break;
       }
     }

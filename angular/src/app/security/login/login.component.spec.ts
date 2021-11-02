@@ -6,7 +6,7 @@ import { LoginService } from '../security.service';
 import { AuthService } from '..';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { LoggerService } from 'src/lib/my-core';
+import { LoggerService } from 'src/lib/mu-core';
 import { FormsModule } from '@angular/forms';
 
 describe('LoginComponent', () => {

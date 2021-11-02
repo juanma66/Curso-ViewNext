@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
-import { User, RegisterUserDAO, LoginService } from '../security.service';
+import { User, RegisterUserDAO, LoginService } from '../services/seguridad.service';
 import { Router } from '@angular/router';
 import { NotificationService, NotificationType } from 'src/app/common-services';
 import { LoggerService } from 'src/lib/my-core';

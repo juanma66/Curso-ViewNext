@@ -66,6 +66,22 @@ export class ShowErrorsDirective implements OnChanges {
 }
 
 
+/*@Directive({
+  selector: '[minlength]',
+  providers: [{ provide: NG_VALIDATORS, useExisting: MinLengthValidator, multi: true }]
+})
+
+export class MinLengthValidator implements Validator {
+  @Input('minlength') min:number= 0;
+  validate(control: AbstractControl): { [key: string]: any } {
+    if (!this.min) {
+      throw new Error('Tiene que tener al menos 2 letras.');
+    }
+    return Validators.minLength(this.min);
+}
+
+}*/
+
 export const VALIDADORES_ERROR_MESSAGE = [LowercaseValidator,ShowErrorsDirective]
 
 

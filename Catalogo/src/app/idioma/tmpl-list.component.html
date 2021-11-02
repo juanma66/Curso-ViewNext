@@ -1,0 +1,21 @@
+<h1>Idiomas</h1>
+<input *ngIf="VM.auth.isAutenticated" class="fas fa-plus" type="button" value="Añadir" routerLink="add">
+<div class="row mb-2">
+    <div class="col-md-6" *ngFor="let item of VM.Listado | paginate: { itemsPerPage: 5, currentPage: page }">
+        <div class="btn-group" role="group">
+            <button *ngIf="VM.auth.isAutenticated" class="btn btn-success" [routerLink]="[item.languageId, 'edit']">
+            <i class="fas fa-pen"></i>
+          </button>
+            <button *ngIf="VM.auth.isAutenticated" class="btn btn-danger" (click)="VM.delete(item.languageId)">
+            <i class="far fa-trash-alt"></i>
+          </button>
+        </div>
+        <div>
+            <div [routerLink]="['/idioma', item.id]">{{item.idioma}}</div>
+        </div>
+
+    </div>
+</div>
+
+<!--<pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente">
+</pagination-controls>-->

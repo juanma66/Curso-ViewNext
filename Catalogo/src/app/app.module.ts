@@ -1,29 +1,23 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { environment } from 'src/environments/environment';
-import { ERROR_LEVEL, LoggerService, MyCoreModule } from 'src/lib/my-core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CommonServicesModule } from './common-services';
+import { FormsModule } from '@angular/forms';
 import { MainModule } from './main';
-import { AjaxWaitInterceptor } from './main/ajax-wait';
+import { CommonServicesModule } from './common-services';
 import { AuthInterceptor, SecurityModule } from './security';
-import { CatalogoComponent } from './app/catalogo/catalogo.component';
-import { PeliculasComponent } from './peliculas/peliculas.component';
-import { ActoresComponent } from './actores/actores.component';
-import { CategoriasComponent } from './categorias/categorias.component';
-import { LenguajeComponent } from './lenguaje/lenguaje.component';
+import { environment } from 'src/environments/environment';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AjaxWaitInterceptor } from './main/ajax-wait';
+import { ERROR_LEVEL, LoggerService, MyCoreModule } from 'src/lib/my-core';
+import { CategoriaModule } from './categoria';
+import { IdiomaModule } from './idioma';
+import { ActorModule } from './actor';
+import { PeliculasModule } from './peliculas';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CatalogoComponent,
-    PeliculasComponent,
-    ActoresComponent,
-    CategoriasComponent,
-    LenguajeComponent
   ],
   imports: [
     BrowserModule,
@@ -34,11 +28,14 @@ import { LenguajeComponent } from './lenguaje/lenguaje.component';
     SecurityModule,
     HttpClientModule,
     MyCoreModule,
-
-
+    CategoriaModule,
+    IdiomaModule,
+    ActorModule,
+    PeliculasModule,
   ],
   providers: [
     LoggerService,
+    // { provide: LoggerService, useClass: LoggerHTTPService },
     { provide: ERROR_LEVEL, useValue: environment.ERROR_LEVEL },
     { provide: HTTP_INTERCEPTORS, useClass: AjaxWaitInterceptor, multi: true, },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true, },

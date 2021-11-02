@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NavigationService } from './common-services';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +6,5 @@ import { NavigationService } from './common-services';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(navigation: NavigationService) {}
+
 }

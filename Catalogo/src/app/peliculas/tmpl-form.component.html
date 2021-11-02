@@ -1,0 +1,46 @@
+<h1>Añadir pelicula al registro</h1>
+<form #miForm="ngForm">
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label class="form-label" for="id"><b>Código: </b></label>
+      <input class="form-control"[class.is-invalid]="id.invalid && miForm.dirty" type="number"name="id" id="id" [(ngModel)]="VM.Elemento.id" #id="ngModel" required min="0"/>
+      <output class="invalid-feedback" [myShowErrors]="id.errors"></output>
+    </div>
+    <div class="form-group col-md-4">
+      <label class="form-label" for="titulo"><b>Título: </b></label>
+      <input class="form-control" [class.is-invalid]="titulo.invalid" type="text" name="titulo" id="titulo" [(ngModel)]="VM.Elemento.titulo" #titulo="ngModel" required minlength="2" maxlength="50"/>
+      <output class="invalid-feedback" [myShowErrors]="titulo.errors"></output>
+    </div>
+    <div class="form-group col-md-4">
+      <label class="form-label" for="autor"><b>Autor: </b></label>
+      <input class="form-control" [class.is-invalid]="autor.invalid" type="text" name="autor" id="autor" [(ngModel)]="VM.Elemento.autor" #autor="ngModel" minlength="2" maxlength="50"/>
+      <output class="invalid-feedback" [myShowErrors]="autor.errors"></output>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label class="form-label" for="fecha"><b>Fecha: </b></label>
+      <input class="form-control" type="date" name="fecha" id="fecha" [(ngModel)]="VM.Elemento.fecha" #fecha="ngModel"/>
+    </div>
+    <div class="form-group col-md-2">
+      <label class="form-label" for="texto"><b>Entrada: </b></label>
+      <textarea [class.is-invalid]="texto.invalid" type="text" name="texto" id="texto" [(ngModel)]="VM.Elemento.texto" #texto="ngModel" maxlength="1000" rows="20" cols="160"></textarea>
+      <output class="invalid-feedback" [myShowErrors]="texto.errors"></output>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="form-group col-md-2">
+      <label class="form-label" for="megusta"><b>Like: </b></label>
+      <input class="form-control" type="number" name="megusta" id="megusta" [(ngModel)]="VM.Elemento.megusta" #megusta="ngModel"/>
+    </div>
+    <div class="form-group col-md-12">
+      <label class="form-label" for="fotourl"><b>Añadir imagen: </b></label>
+      <input class="form-control" type="url" name="fotourl" id="fotourl" [(ngModel)]="VM.Elemento.fotourl" #fotourl="ngModel"/>
+      <output class="invalid-feedback" [myShowErrors]="fotourl.errors"></output>
+    </div>
+  </div>
+  <div class="form-group">
+  <br>
+  <app-form-buttons (send)="VM.send()" [send-disabled]="miForm.invalid" (cancel)="VM.cancel()"></app-form-buttons>
+  </div>
+</form>
