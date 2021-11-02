@@ -3,17 +3,17 @@
 <div class="row mb-2">
     <div class="col-md-6" *ngFor="let item of VM.Listado | paginate: { itemsPerPage: 6, currentPage: page }">
         <div class="btn-group" role="group">
-            <button *ngIf="VM.auth.isAutenticated" class="btn btn-success" [routerLink]="[item.id, 'edit']">
+            <button *ngIf="VM.auth.isAutenticated" class="btn btn-success" [routerLink]="[item.filmId, 'edit']">
             <i class="fas fa-pen"></i>
           </button>
-            <button *ngIf="VM.auth.isAutenticated" class="btn btn-danger" (click)="VM.delete(item.id)">
+            <button *ngIf="VM.auth.isAutenticated" class="btn btn-danger" (click)="VM.delete(item.filmId)">
             <i class="far fa-trash-alt"></i>
           </button>
         </div>
         <div>
 
 
-            <div [routerLink]="['/peliculas/', item.filmId]">{{item.description}}</div>
+            <div [routerLink]="['/peliculas/', item.filmId]">{{item.title}}</div>
         </div>
 
     </div>

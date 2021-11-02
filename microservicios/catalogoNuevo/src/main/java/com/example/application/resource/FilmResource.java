@@ -51,7 +51,6 @@ public class FilmResource {
 	@Autowired
 	private FilmRepository dao;
 
-	@ApiOperation(value = "Listado de las peliculas")
 	@GetMapping
 	public Page<Film> getAll(Pageable pageable) {
 		return dao.findAll(pageable);

@@ -6,6 +6,7 @@ import { NotificationService } from '../common-services';
 import { ModoCRUD } from '../base-code/typos';
 import { Router } from '@angular/router';
 import { AuthService, AUTH_REQUIRED } from '../security';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -17,6 +18,11 @@ export class PeliculasDAOService extends RESTDAOService<any, any> {
       context: new HttpContext().set(AUTH_REQUIRED, true),
     });
   }
+
+  query(): Observable<Array<any>>{
+    return this.http.get<Array<any>>(this.baseUrl+'?mode=short', this.option);
+  }
+
 }
 
 @Injectable({
@@ -27,7 +33,7 @@ export class PeliculasViewModelService {
   protected listado: Array<any> = [];
   protected elemento: any = {};
   protected idOriginal: any = null;
-  protected listURL = '/peliculas';
+  protected listURL = '/peliculas/';
 
   constructor(
     protected notify: NotificationService,
@@ -49,6 +55,7 @@ export class PeliculasViewModelService {
   public list(): void {
     this.dao.query().subscribe(
       (data) => {
+        if(data != null)
         this.listado = data;
         this.modo = 'list';
       },

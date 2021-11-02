@@ -10,11 +10,8 @@
             <i class="far fa-trash-alt"></i>
           </button>
         </div>
-
-        <div [routerLink]="['/actores', item.id]">{{item.nombre}}</div>
+        <a [routerLink]="['/actores', item.id]">{{item.nombre}}</a>
         <p>{{item.apellidos}}</p>
-
-
     </div>
 </div>
 <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente">
