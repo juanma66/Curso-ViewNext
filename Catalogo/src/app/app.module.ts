@@ -15,6 +15,7 @@ import { IdiomaModule } from './idioma';
 import { ActorModule } from './actor';
 import { PeliculasModule } from './peliculas';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { PeliculasModule } from './peliculas';
     IdiomaModule,
     ActorModule,
     PeliculasModule,
+
   ],
   providers: [
     LoggerService,

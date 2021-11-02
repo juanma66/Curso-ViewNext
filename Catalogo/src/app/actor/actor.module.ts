@@ -17,7 +17,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
   ],
   imports: [
     CommonModule, FormsModule, RouterModule.forChild([]),
-    MyCoreModule, CommonServicesModule, CommonComponentModule,NgxPaginationModule
+    MyCoreModule, CommonServicesModule,
+    CommonComponentModule,NgxPaginationModule
   ]
 })
 export class ActorModule { }
